@@ -1,10 +1,398 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title>w2s_Image_detect</title>
 </head>
-<body>
+<style>
+    :root
+    {
+        --nav-color:#ee0b42;
+        --nav1-color:#6610f2;
+        --footer-color:#323236;
+        --info: #17a2b8;
+        --gray: #6c757d;
+    }
+    *
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.2s linear;
+        font-family: 'Poppins', sans-serif;
+        list-style: none;
+    }
+    html,body{
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+    }
+    .nav
+    {
+        position:relative;
+        background: var(--nav1-color);
+        color:white;
+        width:100%;
+        height:80px;
+        display: flex; 
+        justify-content: space-between;
+    }
+    .nav .ico
+    {
+        width: 50%;        
+    }
+    .nav .ico img
+    {
+        position: relative;
+        top: 3px;
+        left:100px;
+    }
+    .nav .navs
+    {
+        width: 50%;
+    }
+    .nav .navs ul 
+    {
+        position: relative;
+        float: right;
+        margin-top: 30px;
+        right:100px;
+        list-style: none;
+        display: flex;
+    }
+    .nav .navs ul li
+    {
+        position: relative;   
+        margin-left: 20px;
+    }
+    .nav .navs ul li a
+    {
+        font-size: 19px;
+        padding: 0.3rem .7rem 0.3rem .7rem;
+        text-decoration: none;
+        color:white;
+    }
+    .nav .navs ul li:hover a
+    {
+        background: white;
+        color:var(--nav1-color);
+        border-radius: 5px;
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
+    .fixnav
+    {
+        position: fixed;
+        top:0;
+        width: 100%;
+        overflow:auto;
+    }
+    #home
+    {
+        width: 100%;
+        height:calc(100vh-100px);
+    }
+    #home .homes{
+        display: flex;
+        justify-content:space-between ;
+    }
+    #about
+    {
+        position: relative;
+        width: 100%;
+        height: calc(100vh-100px);
+        display: flex;
+        background: #f2f2f2;
+    }
+    #about .abtimg
+    {
+        position: relative;
+        width: 50%;
+        left:0px;
+    }
+    #about .about-content
+    {
+        position: relative;
+        width: 50%;
+        text-align: center;
+        background: var(--footer-color);
+        color: white;
+    }
+    #about .about-content p
+    {
+        position: relative;
+        top: 250px;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    #product
+    {
+        position: relative;
+        width: 100%;
+        height:calc(100vh-100px);
+        display: flex;
+        background: var(--info);
+    }
+    #product .pro-content
+    {
+        position: relative;
+        width: 50%;
+        text-align: center;
+        background-color: white;
+        color:var(--footer-color);
+    }
+    #product .pro-content p
+    {
+        position: relative;
+        top: 250px;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    #product .proimg
+    {
+        position: relative;
+        width: 50%;
+    }
+    #footers
+    {
+        width: 100%;
+        height:400px;
+        background: var(--footer-color);
+        color: white;
+        display: flex;
+        flex-direction: column;
+    }
+    #footers .container
+    {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 10px;
+        margin-left: 50px;
+    }
+    #footers .container .row1
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    #footers .container .row1 img
+    {
+        width: 300px;
+        height: 150px;
+    }
+    #footers .container .row1 p
+    {
+        padding: 0.5em;
+        font-size: 18px;
+    }
+    #footers .container .row2 ul li
+    {
+        padding:.4em;
+        cursor: pointer;
+    }
+    #footers .container .row2 ul li a
+    {
+        color: white;
+        text-decoration: none;
+        
+    }
+    #footers .container .row2 ul li:hover a
+    {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        background: white;
+        font-weight:bold ;
+        color:var(--nav1-color);
+    }
+    #footers .container1
+    {
+        display: flex;
+        height: 50px;
+        justify-content: center;
+    }
+    #footers .container2
+    {
+        display: flex;
+        height: 60px;
+        justify-content: center;
+    }
+    #footers .container2 ul
+    {
+        display: flex;
+    }
+    #footers .container2 ul li
+    {
+        position: relative;
+        margin-left: 10px;
+    }
+    #footers .container2 ul li a i
+    {
+        font-size: 25px;
+    }
+    #footers .container2 ul li:nth-child(1) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: white;
+        color:#25d366;
+    }
+    #footers .container2 ul li:nth-child(2) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: white;
+        color:#4267B2;
+    }
+    #footers .container2 ul li:nth-child(3) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: linear-gradient(to bottom right, #fb3958, #458eff);
+        color: white;
+    }
+    #footers .container2 ul li:nth-child(4) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: white;
+        color:#FF0000;
+    }
+    #footers .container2 ul li:nth-child(5) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: white;
+        color:#0077b5;
+    }
+    #footers .container2 ul li:nth-child(1) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        background:#25d366;
+    }
+    #footers .container2 ul li:nth-child(2) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        background:#4267B2;
+    }
+    #footers .container2 ul li:nth-child(3) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color:  #458eff;
+        background: white;
+    }
+    #footers .container2 ul li:nth-child(4) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        background:#FF0000;
+    }
+    #footers .container2 ul li:nth-child(5) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        background:#0077b5;
+    }
+    #footers .container1 p a 
+    {
+        color: White;
+        text-decoration: none;
+        background: var(--nav1-color);
+        padding: .3rem .7rem .3rem .7rem;
+    }
 
+</style>
+<body>
+    <div class="nav" id="navigation">
+        <div class="ico">
+            <img src="/static/img/w2sicon.png" alt="">
+        </div>
+        <div class="navs">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#product">Products</a></li>
+                <li><a href="http://127.0.0.1:8000/image/">Image</a></li>
+                <li><a href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
+            </ul>
+        </div>
+    </div>
+    <section id="home"> 
+        <div class="homes">
+            <img src="/static/img/1.png" alt="">
+            <img src="/static/img/2.png" alt="">
+        </div>
+    </section>
+    <section id="about">
+        <div class="abtimg">
+            <img src="/static/img/3.png" alt="">
+        </div>
+        <div class="about-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </section>
+    <section id="product">
+        <div class="pro-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="proimg">
+            <img src="/static/img/4.png" alt="">
+        </div>
+    </section>
+    <section id="footers">
+        <div class="container">
+            <div class="row1">
+                <img src="/static/img/footer.png" alt="">
+                <p>This is Machine Learning Platform Where everyone can make this platform very useful.</p>
+                <p>Want to view our Product ?</p>
+                <p>Use those links in our Products.</p>
+            </div>
+            <div class="row2">
+                <h2>Products links</h2>
+                <ul>
+                    <li><a href="http://127.0.0.1:8000/image/"> Image Detection</a></li>
+                    <li><a href="http://127.0.0.1:8000/webcam/"> Live Detection</a></li>
+                    <li><a href="http://127.0.0.1:8000/webcam/"> Group Detection</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container2">
+            <ul>
+                <li><a href=""><i class="lab la-whatsapp"></i></a></li>
+                <li><a href=""><i class="lab la-facebook-f"></i></a></li>
+                <li><a href=""><i class="lab la-instagram"></i></a></li>
+                <li><a href=""><i class="lab la-youtube"></i></a></li>
+                <li><a href=""><i class="lab la-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+        <div class="container1">
+            <p>© Copyright  2021 by <a href="https://www.way2smile.com/"> Private Limited. </a></p>
+        </div>
+
+    </section>
+    <script>
+        window.onscroll = function() {fixnav()};
+        var navigation = document.getElementById("navigation")
+        var fix = navigation.offsetTop;
+        function fixnav()
+        {
+            if(window.pageYOffset >= fix){
+                navigation.classList.add("fixnav");
+            }
+            else{
+                navigation.classList.remove("fixnav");
+            }
+        }
+    </script>
 </body>
 </html>

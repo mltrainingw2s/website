@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from mlapps import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index, name="index"),
+    path('image/',views.imgdetect, name="image"),
+    path('webcam/',views.videodetect, name="webcam"),
 ]
