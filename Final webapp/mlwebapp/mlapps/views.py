@@ -49,15 +49,20 @@ def imgdetect(request):
             color = (255,50,50)
             content = score *100
             if content >= 0  and content <= 20:
-                data = ""
+                data = "Smile please,...Smile while you stil have teeth!."
+                funny = "Konjam siringa boss,"
             elif content >= 21 and content <=40:
-                data = ""
+                data = "Smile ,it increases your face value."
+                funny = "yena siripu light ah dhaan yetti pakuthu "
             elif content >= 41 and content <=60:
-                data = ""
+                data = "Your smile is literally the cutest thing,I have ever seen"
+                funny = "Nalla vela konjamachu sirichiyea"
             elif content >=61 and content <= 80:
-                data = ""
+                data = "Wear a smile on everyday,have a great confidence"
+                funny = "Polachi kita, manusan thaan da nee"
             else:
-                data = ""
+                data = "Your such a happiest and adorable one,don't forget to smile at any situation"
+                funny = "Appada sirichitan yevolo puyal vanthalum ,evan matum thapichiruvan!"
             emotion_score = "{}: {}".format(emotion_name, "{:.0%}".format(score))
             smile_percent ="{:.0%}".format(score)
             print("smile",smile_percent)

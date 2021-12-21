@@ -325,7 +325,70 @@
         box-shadow: 
                     inset 2px 2px 7px rgba(0,0,0,0.4);
     }
+    .navss
+    {
+        background: var(--nav1-color);
+    }
 </style>
+<style>
+    
+    .speciality .box-container{
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap:1.5rem;
+    }
+
+    .speciality .box-container .box{
+        flex:1 1 30rem;
+        position: relative;
+        height: 10%;
+        overflow: hidden;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+        border:.1rem solid rgba(0,0,0,.3);
+        cursor: pointer;
+        border-radius: .5rem;
+    }
+
+    .speciality .box-container .box .content{
+        height:100%;
+        width:100%;
+        object-fit: cover;
+        position: absolute;
+        top:-100%; left:0;
+    }
+
+    .speciality .box-container .box .image{
+        text-align: center;
+        background:#fff;
+        padding:2rem;
+    }
+
+    .speciality .box-container .box .content img{
+        margin:1.5rem 0;
+    }
+
+    .speciality .box-container .box .content h3{
+        font-size: 2.5rem;
+        color:#333;
+    }
+
+    .speciality .box-container .box .content p{
+        font-size: 1.6rem;
+        color:#666;
+        padding:1rem 0;
+    }
+
+    .speciality .box-container .box:hover .content{
+        top:0;
+    }
+
+    .speciality .box-container .box:hover .image{
+        transform: translateY(100%);
+    }
+
+</style>
+
 <body>
     <div class="nav" id="navigation">
         <div class="ico">
@@ -343,6 +406,43 @@
     </div>
     <section id="main">
     </section>
+    <section class="speciality" id="speciality">
+
+        <!-- <h1 class="heading"> our <span>speciality</span> </h1> -->
+        <br>
+        <div class="box-container">
+    
+            <div class="box">
+                <img class="image" src="/static/img/face.jpg" alt="">
+                <div class="content">
+                    <!-- <img src="images/s-1.png" alt=""> -->
+                    <h3>Digital</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="/static/img/face.jpg" alt="">
+                <div class="content">
+                    <!-- <img src="images/s-2.png" alt=""> -->
+                    <h3>Data science</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="/static/img/face.jpg" alt="">
+                <div class="content">
+                    <h3>Algorithm</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="/static/img/face.jpg" alt="">
+                <div class="content">
+                    <h3>Classification</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
+                </div>
+            </div>
+        </div>
     <section id="home"> 
         <div class="homes">
             <img src="/static/img/1.png" alt="">
@@ -399,7 +499,18 @@
 
     </section>
     <script>
-       
+        window.onscroll = function() { change_nav() };
+        var navbar = document.getElementById("navigation");
+        var navg = document.getElementById("home");
+        var change = navg.offsetTop;
+        function change_nav() {
+         if (window.pageYOffset >= change){
+         navbar.classList.add("navss");
+             }
+         else{
+                 navbar.classList.remove("navss");
+             }
+        }
     </script>
 </body>
 </html>
