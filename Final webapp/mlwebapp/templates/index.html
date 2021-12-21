@@ -33,8 +33,8 @@
     }
     .nav
     {
-        position:relative;
-        background: var(--nav1-color);
+        position:fixed;
+        background: transparent;
         color:white;
         width:100%;
         height:80px;
@@ -90,6 +90,15 @@
         top:0;
         width: 100%;
         overflow:auto;
+    }
+    #main
+    {
+        width: 100%;
+        height: calc(100vh);
+        background: url('/static/img/7.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* filter: blur(5px); */
     }
     #home
     {
@@ -308,23 +317,32 @@
         background: var(--nav1-color);
         padding: .3rem .7rem .3rem .7rem;
     }
-
+    .nav .navs ul li .active
+    {
+        background: white;
+        color:var(--nav1-color);
+        border-radius: 5px;
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
 </style>
 <body>
     <div class="nav" id="navigation">
         <div class="ico">
             <img src="/static/img/w2sicon.png" alt="">
         </div>
-        <div class="navs">
+        <div class="navs" id="na">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#product">Products</a></li>
-                <li><a href="http://127.0.0.1:8000/image/">Image</a></li>
-                <li><a href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
+                <li><a class="links active" href="/">Home</a></li>
+                <li><a class="links" href="#about">About</a></li>
+                <li><a class="links" href="#product">Products</a></li>
+                <li><a class="links" href="http://127.0.0.1:8000/image/">Image</a></li>
+                <li><a class="links" href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
             </ul>
         </div>
     </div>
+    <section id="main">
+    </section>
     <section id="home"> 
         <div class="homes">
             <img src="/static/img/1.png" alt="">
@@ -381,18 +399,7 @@
 
     </section>
     <script>
-        window.onscroll = function() {fixnav()};
-        var navigation = document.getElementById("navigation")
-        var fix = navigation.offsetTop;
-        function fixnav()
-        {
-            if(window.pageYOffset >= fix){
-                navigation.classList.add("fixnav");
-            }
-            else{
-                navigation.classList.remove("fixnav");
-            }
-        }
+       
     </script>
 </body>
 </html>

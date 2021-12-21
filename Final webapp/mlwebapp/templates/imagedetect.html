@@ -84,79 +84,193 @@
         box-shadow: 
                     inset 2px 2px 7px rgba(0,0,0,0.4);
     }
-    .fixnav
+    .nav .navs ul li .active
     {
-        position: fixed;
-        top:0;
-        width: 100%;
-        overflow:auto;
+        background: white;
+        color:var(--nav1-color);
+        border-radius: 5px;
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
     }
-    #home
-    {
-        width: 100%;
-        height:calc(100vh-100px);
-    }
-    #home .homes{
-        display: flex;
-        justify-content:space-between ;
-    }
-    #about
-    {
-        position: relative;
-        width: 100%;
-        height: calc(100vh-100px);
-        display: flex;
-        background: #f2f2f2;
-    }
-    #about .abtimg
-    {
-        position: relative;
-        width: 50%;
-        left:0px;
-    }
-    #about .about-content
-    {
-        position: relative;
-        width: 50%;
+    /* navbar ends here */
+    /* head content */
+    .head{
+        background:var(--nav1-color);
         text-align: center;
-        background: var(--footer-color);
         color: white;
+        padding: .5em .6em .5em .6em;
     }
-    #about .about-content p
-    {
-        position: relative;
-        top: 250px;
-        font-size: 20px;
-        font-weight: bolder;
-    }
-    #product
+    /* ends head */
+    /* browse section starts here */
+    #browse 
     {
         position: relative;
         width: 100%;
-        height:calc(100vh-100px);
         display: flex;
-        background: var(--info);
+        height:calc(100vh);
     }
-    #product .pro-content
+    #browse .container
     {
-        position: relative;
         width: 50%;
-        text-align: center;
-        background-color: white;
-        color:var(--footer-color);
+        height: 100%;
+        margin-top:10px;
+        /* background: url("/static/img/1.png");
+        background-repeat: no-repeat; */
     }
-    #product .pro-content p
+    #browse .container .col
     {
-        position: relative;
-        top: 250px;
-        font-size: 20px;
+        background: #25d366;
+        color:white;
+        width: fit-content;
         font-weight: bolder;
+        text-align: center;
+        padding: .4em;
+        margin-left: 20%;
     }
-    #product .proimg
+    #browse .container p span:before
+    {
+        content: '';
+        animation: change 5s infinite;
+        background: var(--info);
+        color: white;
+        padding: 0.3em .6em .3em .6em;
+        font-weight: bolder;
+        border-radius: 4px;
+    }
+
+    @keyframes change
+    {
+        0%
+        {
+            content: ' are you in that moment ?';
+            background: var(--info);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+        30%
+        {
+            content: ' your friends in that moment ?';
+            background: var(--footer-color);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+        60%
+        {
+            content: ' Your collegues in that moment ?';
+            background: var(--nav-color);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+        100%
+        {
+            content: 'your parents in that moment ?';
+            background: var(--nav1-color);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+    }
+    #browse .container form p
+    {
+        margin-left:20px;
+        border-radius: 5px;
+        background: #4267B2;
+        color:white;
+        width: fit-content;
+        font-weight: bolder;
+        padding: .4em;
+    }
+
+    #browse .container form div
+    {
+        width: 25%;
+        display: flex;
+        /* flex-direction: column; */
+        float: right;
+        justify-content: space-evenly;
+        margin-right: 20px;
+    }
+    #browse .container form div label
     {
         position: relative;
-        width: 50%;
+        float: right;
+        background: White;
+        color:var(--nav-color);
+        cursor: pointer;
+        text-align: center;
+        font-weight: bolder;
+        padding: .5em .7em .5em .7em;
+        border:1px solid var(--nav-color);
+        border-radius: 5px;
     }
+    #browse .container form div label:hover
+    {
+        background: var(--nav-color);
+        color:white;
+    }
+    #browse .container form div input[type="submit"]
+    {
+        position: relative;
+        float: right;
+        background: var(--nav1-color);
+        color: white;
+        border-radius: 5px;
+        padding: 0.5em 1em .5em 1em;
+        font-family: 'Poppins',sans-serif;
+        font-size: 19px;
+        cursor: pointer;
+        border:none;
+    }
+    #browse .container .prev
+    {
+        width: 100%;
+    }
+    #browse .container .prev img
+    {   
+        margin-left: 10px;
+        width: 80%;
+        justify-content: center;
+        border-radius: 5px;
+        box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    }
+    #browse .container1
+    {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        /* justify-content: center; */
+        background: #6610f2;
+    }
+    #browse .container1 img
+    {
+        margin-left: 5%;
+        width:80%;
+        height:50%;
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+        border-radius: 10px;
+    }
+    #browse .container1 p
+    {
+        background: #f4f4f4;
+        width: fit-content;
+        margin-left: 20%;
+        padding: 2em 4em 2em 4em;
+        border-radius: 5px;
+        font-size: 17px;
+    }
+    #browse .container1 p span
+    {
+        background: var(--info);
+        color:white;
+        font-weight: bolder;
+        padding: 0.2em .5em .2em .5em;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+
+
+    /* browse ends here */
+
+    /* Footer Starts here */
     #footers
     {
         width: 100%;
@@ -211,6 +325,39 @@
         display: flex;
         height: 50px;
         justify-content: center;
+    }
+    #footers .container1 p a:hover
+    {
+        animation: anim 0.8s alternate linear;
+    }
+    @keyframes anim
+    {
+        0%{
+            background: white;
+            opacity: 0.5;
+            color:var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
+        25%
+        {
+            background: var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
+        50%
+        {
+            opacity: 1;
+            background: white;
+            color:var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
+        100%{
+            background: var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
     }
     #footers .container2
     {
@@ -308,45 +455,55 @@
         background: var(--nav1-color);
         padding: .3rem .7rem .3rem .7rem;
     }
-
+    
 </style>
 <body>
     <div class="nav" id="navigation">
         <div class="ico">
             <img src="/static/img/w2sicon.png" alt="">
         </div>
-        <div class="navs">
+        <div class="navs" id="na">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#product">Products</a></li>
-                <li><a href="http://127.0.0.1:8000/image/">Image</a></li>
-                <li><a href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
+                <li><a class="links" href="/">Home</a></li>
+                <li><a class="links" href="/#about">About</a></li>
+                <li><a class="links" href="/#product">Products</a></li>
+                <li><a class="links active" href="http://127.0.0.1:8000/image/">Image</a></li>
+                <li><a class="links" href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
             </ul>
         </div>
     </div>
-    <section id="home"> 
-        <div class="homes">
-            <img src="/static/img/1.png" alt="">
-            <img src="/static/img/2.png" alt="">
+    <h2 class="head">Our Happy Detect AI</h2>
+    <section id= "browse"> 
+        <div class="container">
+            <br>
+            <p>How happy <span></span></p>
+            <br>
+            <p class="col">Visualize everyones happiness by our AI</p>
+            <br>
+            <form action="{% url 'image'%}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>Upload Photos & check everyone happiness Level</p>
+                <div>
+                    <input type="file" accept="image/*" name="image" id="imgs" onchange="loadfile(event)" style="display: none;"/>
+                    <label for="imgs">Click Me</label>
+                    <input type="submit" name="submit"/>
+                </div>
+                <br>
+            </form>
+            <br>
+            <div class="prev">
+                <img class="output" id="output"  src="/static/img/6.png"/>
+            </div>
+        </div>
+        <div class="container1">
+            <img src="/static/detectimg/{{detect_img}}" style="width: 80%;">
+            <br>
+            <p>In Your Picture these are the smile level <span>{{smile_percent}}</span></p>
         </div>
     </section>
-    <section id="about">
-        <div class="abtimg">
-            <img src="/static/img/3.png" alt="">
-        </div>
-        <div class="about-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-    </section>
-    <section id="product">
-        <div class="pro-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="proimg">
-            <img src="/static/img/4.png" alt="">
+    <section id="all"> 
+        <div class="container">
+            
         </div>
     </section>
     <section id="footers">
@@ -381,18 +538,10 @@
 
     </section>
     <script>
-        window.onscroll = function() {fixnav()};
-        var navigation = document.getElementById("navigation")
-        var fix = navigation.offsetTop;
-        function fixnav()
-        {
-            if(window.pageYOffset >= fix){
-                navigation.classList.add("fixnav");
-            }
-            else{
-                navigation.classList.remove("fixnav");
-            }
-        }
+        var loadfile = function(event){
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
     </script>
 </body>
 </html>
