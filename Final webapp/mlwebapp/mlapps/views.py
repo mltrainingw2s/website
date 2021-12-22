@@ -75,7 +75,7 @@ def imgdetect(request):
             save_test = Ml_Image.objects.create(image_upload = str(fie),smile_percentage = content,image_type = 1)
             get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
             print("get",get_image)
-        return render(request,"imagedetect.html",{'detect_img':fie,"smile_percent":smile_percent,"content":data,"gallery":get_image})
+        return render(request,"imagedetect.html",{'detect_img':fie,"smile_percent":smile_percent,"content":data,"gallery":get_image,"funny":funny})
     else:
         return render(request,"imagedetect.html",{'detect_img':"5.png","smile_percent":"80%"})
 

@@ -127,6 +127,11 @@
         padding: .4em;
         margin-left: 20%;
     }
+    #browse .container .one
+    {
+        position: relative;
+        left:3%;
+    }
     #browse .container p span:before
     {
         content: '';
@@ -169,9 +174,10 @@
             padding: 0.3em .6em .3em .6em;
         }
     }
-    #browse .container form p
+    #browse .container .cols
     {
-        margin-left:20px;
+        float: right;
+        margin-right:20%;
         border-radius: 5px;
         background: #4267B2;
         color:white;
@@ -455,7 +461,207 @@
         background: var(--nav1-color);
         padding: .3rem .7rem .3rem .7rem;
     }
-    
+    /* responsive template 1280px*/
+
+    @media screen and (max-width: 1280px) and (min-height: 799px)
+    {
+        #browse .container .prev 
+        {
+            width: 100%;
+            height: 400px;
+        }
+        #browse .container .prev img 
+        {
+            left: 10%;
+            top: 15px;
+            position: relative;
+            height:300px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+        }
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+
+    }
+    /* responsive template 1024px*/
+
+    @media screen and (max-width: 1024px) and (min-height: 599px)
+    {
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+            padding: 1em 2em 1em 1em;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .nav .navs ul li a {
+            font-size: 15px;
+        }
+        #browse .container form div label {
+            padding: 0.3em 0.5em 0.3em 0.4em;
+            font-size: 15px;
+            width: fit-content;
+            height: fit-content;
+        }
+        #browse .container form div input[type="submit"] {
+            padding: 0.3em 0.5em 0.3em 0.5em;
+            font-size: 16px;
+        }
+    }
+    /* responsive template 1024px height 1366px */
+    @media screen and (max-width: 1024px) and (min-height: 1365px)
+    {
+        #browse 
+        {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+        #browse .container 
+        {
+            width: 100%;
+            background: #f4f4f4;
+        }
+        #browse .container .one 
+        {
+            font-size: 25px;
+        }
+        #browse .container .col 
+        {
+            font-size: 25px;
+        }
+        #browse .container .cols 
+        {
+            margin-right: 15%;
+            font-size: 25px;
+        }
+        #browse .container1 
+        {
+            width: 100%;
+        }
+        #browse .container form div 
+        {
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 15%;
+            padding: 1em 2em 1em 1em;
+            border-radius: 8px;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        #browse .container .prev img {
+            left: 25%;
+            top: 10px;
+            height: 350px;
+            width: fit-content;
+        }
+        .nav .navs ul li a {
+            font-size: 15px;
+        }
+        #browse .container form div label {
+            
+            font-size: 25px;
+        }
+        #browse .container form div input[type="submit"] {
+            font-size: 25px;
+        }
+        #browse .container1 img 
+        {
+            margin-left: 8%;
+            margin-top: 5%;
+            box-shadow: 4px 4px 10px rgb(0,0,0,.5);
+        }
+    }
+
+    /* responsive template 1024px only */
+    @media screen and (max-width: 1024px)
+    {
+        #browse 
+        {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+        #browse .container 
+        {
+            width: 100%;
+            background: #f4f4f4;
+        }
+        #browse .container .one 
+        {
+            font-size: 25px;
+        }
+        #browse .container .col 
+        {
+            font-size: 25px;
+        }
+        #browse .container .cols 
+        {
+            margin-right: 15%;
+            font-size: 25px;
+        }
+        #browse .container1 
+        {
+            width: 100%;
+        }
+        #browse .container form div 
+        {
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 15%;
+            padding: 1em 2em 1em 1em;
+            border-radius: 8px;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        #browse .container .prev img {
+            left: 25%;
+            top: 10px;
+            height: 350px;
+            width: fit-content;
+        }
+        .nav .navs ul li a {
+            font-size: 15px;
+        }
+        #browse .container form div label {
+            
+            font-size: 25px;
+        }
+        #browse .container form div input[type="submit"] {
+            font-size: 25px;
+        }
+        #browse .container1 img 
+        {
+            margin-left: 8%;
+            margin-top: 5%;
+            box-shadow: 4px 4px 10px rgb(0,0,0,.5);
+        }
+    }
+    /* responsive template 768px height 1024px */
+    @media screen and (max-width: 768px) and (min-height: 1365px)
+    {
+
+    }
 </style>
 <body>
     <div class="nav" id="navigation">
@@ -476,13 +682,18 @@
     <section id= "browse"> 
         <div class="container">
             <br>
-            <p>How happy <span></span></p>
+            <p class="one">How happy <span></span></p>
             <br>
             <p class="col">Visualize everyones happiness by our AI</p>
             <br>
+            <p class="cols">Upload Photos & check everyone happiness Level</p>
+            <br>
+            <div class="prev">
+                <img class="output" id="output"  src="/static/img/6.png"/>
+            </div>
+            <br>
             <form action="{% url 'image'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <p>Upload Photos & check everyone happiness Level</p>
                 <div>
                     <input type="file" accept="image/*" name="image" id="imgs" onchange="loadfile(event)" style="display: none;"/>
                     <label for="imgs">Click Me</label>
@@ -490,10 +701,6 @@
                 </div>
                 <br>
             </form>
-            <br>
-            <div class="prev">
-                <img class="output" id="output"  src="/static/img/6.png"/>
-            </div>
         </div>
         <div class="container1">
             <img src="/static/detectimg/{{detect_img}}" style="width: 80%;">
@@ -502,8 +709,13 @@
         </div>
     </section>
     <section id="all"> 
-        <div class="container">
-            
+        <div class="container" style="width: 100%; height:500px;background: white; overflow: auto;">
+            {% for msg in gallery%}
+            <h2 style="background: red;"> 
+                <img src="/static/detectimg/{{msg.image_upload}}" alt="" width="250px" height="250px">
+            </h2>
+            <p>{{msg.smile_percentage}}</p>
+            {% endfor %}
         </div>
     </section>
     <section id="footers">
