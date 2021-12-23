@@ -7,11 +7,13 @@ import numpy as np
 from django.conf import settings
 from fer import Video
 from fer import FER
-
+import threading
 
 class VideoCamera(object):
     def __init__(self):
         self.video = cv2.VideoCapture(0)
+        (self.grabbed, self.frame_flip) = self.video.read()
+        threading.Thread(target=self.update, args=()).start()
 
     def __del__(self):
         self.video.release()
@@ -21,16 +23,16 @@ class VideoCamera(object):
     def get_frame(self):
         # detector = MTCNN()
         success, image = self.video.read()
-        frame_flip = cv2.flip(image, 1)
+        self.frame_flip = cv2.flip(image, 1)
         # detector = FER()
         # a=detector.detect_emotions(frame_flip)
         emotion_detector = FER(mtcnn=True)
-        result = emotion_detector.detect_emotions(frame_flip)
+        result = emotion_detector.detect_emotions(self.frame_flip)
         print(result,"result")
         for i in result:
             bounding_box = i["box"]
             emotions = i["emotions"]
-            cv2.rectangle(frame_flip,(
+            cv2.rectangle(self.frame_flip,(
             bounding_box[0], bounding_box[1]),(
             bounding_box[0] + bounding_box[2], bounding_box[1] + bounding_box[3]),
                         (0, 155, 255), 2,)
@@ -39,7 +41,7 @@ class VideoCamera(object):
             max_value = max(all_values)
             # print(max_emotions)
             # print(max_value)
-            emotion_name, score = emotion_detector.top_emotion(frame_flip)
+            emotion_name, score = emotion_detector.top_emotion(self.frame_flip)
             a=list(emotions.items())
             emotion_name=a[3][0]
             # print(emotion_name)
@@ -52,13 +54,17 @@ class VideoCamera(object):
             smile_percent ="{:.0%}".format(score)
             print("smile",smile_percent)
             # print(smile_percent,"this is the smile percentage")
-            cv2.putText(frame_flip,emotion_score,
+            cv2.putText(self.frame_flip,emotion_score,
                     (bounding_box[0], bounding_box[1] + bounding_box[3] + 30 + 3 * 0),
                     cv2.FONT_HERSHEY_SIMPLEX,0.75,color,2,cv2.LINE_AA,)
-        
-        ret, jpeg = cv2.imencode('.jpg', frame_flip)
-        return jpeg.tobytes()
-
+        imgs =self.frame_flip
+        self.ret, self.jpeg = cv2.imencode('.jpg', imgs)
+        return self.jpeg.tobytes()
+    
+    def update(self):
+        while True:
+            (self.grabbed,self.frame_flip) = self.video.read()
+            return self.jpeg.tobytes()
 
 
 # class IPWebCam(object):
