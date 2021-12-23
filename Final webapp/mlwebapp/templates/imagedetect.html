@@ -40,6 +40,7 @@
         height:80px;
         display: flex; 
         justify-content: space-between;
+        box-shadow: 2px 3px 6px rgba(0,0,0,0.2);
     }
     .nav .ico
     {
@@ -263,6 +264,16 @@
         border-radius: 5px;
         font-size: 17px;
     }
+    #browse .container1 .con
+    {
+        background: transparent;
+        color: white;
+        width: fit-content;
+        margin-left: 20%;
+        padding: 2em 4em 2em 4em;
+        border-radius: 5px;
+        font-size: 17px;
+    }
     #browse .container1 p span
     {
         background: var(--info);
@@ -272,6 +283,30 @@
         box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     }
 
+    #browse .container1 .content
+    {
+        position: relative;
+        left:10%;
+        width: 500px;
+        /* background: tra; */
+    }
+    #browse .container1 .fun
+    {
+        position: relative;
+        width: 100%;
+        
+        height:fit-content;
+    }
+    #browse .container1 .fun button
+    {
+        width: fit-content;
+        background: var(--footer-color);
+        color: white;
+        padding: .3em .5em .3em .5em;
+        cursor: pointer;
+        box-shadow: 3px 4px 8px rgba(0,0,0,0.4);
+        border:none;
+    }    
 
 
     /* browse ends here */
@@ -461,7 +496,82 @@
         background: var(--nav1-color);
         padding: .3rem .7rem .3rem .7rem;
     }
-    /* responsive template 1280px*/
+    .gallery
+    {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .gallery .card
+    {
+        position: relative;
+        background: #f4f4f4;
+        margin: 5px;
+        box-shadow: 2px 2px 7px rgba(0,0,0,0.4);
+        border-radius: 10px;
+    }
+    .gallery .card img
+    {
+        width: 300px;
+        height: 300px;
+    }
+    .gallery .card p
+    {
+        position: relative;
+        left:50%;
+    }
+    /* responsive template 1281px */
+    @media screen and (min-width: 1281px)
+    {
+        #browse .container .prev 
+        {
+            width: 100%;
+            height: 400px;
+        }
+        #browse .container .prev img 
+        {
+            left: 10%;
+            top: 15px;
+            position: relative;
+            height:300px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+        }
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+
+    }
+    /* resonsive template 1280px */
+    @media screen and (max-width: 1280px)
+    {
+        #browse .container .prev 
+        {
+            width: 100%;
+            height: 400px;
+        }
+        #browse .container .prev img 
+        {
+            left: 10%;
+            top: 15px;
+            position: relative;
+            height:300px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+        }
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+
+    }
+    /* responsive template 1280px height 799px*/
 
     @media screen and (max-width: 1280px) and (min-height: 799px)
     {
@@ -664,6 +774,11 @@
     }
 </style>
 <body>
+    {% if pop == 1 %}
+    <script>
+        alert("your image doesnot have face");
+    </script>
+    {% endif %}
     <div class="nav" id="navigation">
         <div class="ico">
             <img src="/static/img/w2sicon.png" alt="">
@@ -673,8 +788,8 @@
                 <li><a class="links" href="/">Home</a></li>
                 <li><a class="links" href="/#about">About</a></li>
                 <li><a class="links" href="/#product">Products</a></li>
-                <li><a class="links active" href="http://127.0.0.1:8000/image/">Image</a></li>
-                <li><a class="links" href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
+                <li><a class="links active" href="/image">Image</a></li>
+                <li><a class="links" href="/webcam">Webcam</a></li>
             </ul>
         </div>
     </div>
@@ -703,19 +818,33 @@
             </form>
         </div>
         <div class="container1">
+            
+            <div  class="fun">
+                <button onclick="funcontent()">Fun Comment</button>
+                <p id="funed"style="display: none;">{{funny}}</p>
+            </div>
+            <div class="content">
+                <p class="con">{{content}}</p>
+            </div>
+            <br>
             <img src="/static/detectimg/{{detect_img}}" style="width: 80%;">
             <br>
             <p>In Your Picture these are the smile level <span>{{smile_percent}}</span></p>
         </div>
     </section>
+    <br>
+    <br>
     <section id="all"> 
         <div class="container" style="width: 100%; height:500px;background: white; overflow: auto;">
-            {% for msg in gallery%}
-            <h2 style="background: red;"> 
-                <img src="/static/detectimg/{{msg.image_upload}}" alt="" width="250px" height="250px">
-            </h2>
-            <p>{{msg.smile_percentage}}</p>
-            {% endfor %}
+            
+            <div class="gallery">
+                {% for msg in gallery%}
+                <div class="card">
+                    <img src="/static/detectimg/{{msg.image_upload}}" alt="" width="250px" height="250px">
+                    <p>{{msg.smile_percentage}}% of Smile </p>
+                </div> 
+                {% endfor %}
+            </div>
         </div>
     </section>
     <section id="footers">
@@ -729,9 +858,9 @@
             <div class="row2">
                 <h2>Products links</h2>
                 <ul>
-                    <li><a href="http://127.0.0.1:8000/image/"> Image Detection</a></li>
-                    <li><a href="http://127.0.0.1:8000/webcam/"> Live Detection</a></li>
-                    <li><a href="http://127.0.0.1:8000/webcam/"> Group Detection</a></li>
+                    <li><a href="/image"> Image Detection</a></li>
+                    <li><a href="/webcam"> Live Detection</a></li>
+                    <li><a href="/webcam"> Group Detection</a></li>
                 </ul>
             </div>
         </div>
@@ -754,6 +883,11 @@
             var image = document.getElementById('output');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
+    </script>
+    <script>
+        function funcontent(){
+            document.getElementById("funed").style.display = "block";
+        }
     </script>
 </body>
 </html>

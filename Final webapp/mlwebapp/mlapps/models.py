@@ -13,3 +13,13 @@ class Ml_Image(models.Model):
     image_type = models.IntegerField(null = True)
     class Meta:
         db_table = 'Image'
+
+class Ml_web(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now = True)
+    image_upload = models.CharField(max_length = 250, null = True)
+    image_type = models.IntegerField(null = True)
+    smile_percentage = models.IntegerField(null = True)
+    class Meta:
+        db_table = 'WebCam'
+

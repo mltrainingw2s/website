@@ -243,6 +243,17 @@
         box-shadow: 
                     inset 2px 2px 7px rgba(0,0,0,0.4);
     }   
+    .webcontainer{
+        position: relative;
+        left: 20%;
+        width: 80%;
+        height: calc(100vh);
+    }
+    .webcontainer img{
+        width: 500px;
+        height: fit-content;
+
+    }
 </style>
 <body>
     <div class="nav" id="navigation">
@@ -254,12 +265,14 @@
                 <li><a class="links" href="/">Home</a></li>
                 <li><a class="links" href="/#about">About</a></li>
                 <li><a class="links" href="/#product">Products</a></li>
-                <li><a class="links" href="http://127.0.0.1:8000/image/">Image</a></li>
-                <li><a class="links active" href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
+                <li><a class="links" href="/image/">Image</a></li>
+                <li><a class="links active" href="/webcam/">Webcam</a></li>
             </ul>
         </div>
     </div>
-    <video src=""></video>
+    <div class="webcontainer"><br>
+        <img src = "{% url 'video_feed' %}">
+    </div>
     <section id="footers">
         <div class="container">
             <div class="row1">
@@ -271,9 +284,9 @@
             <div class="row2">
                 <h2>Products links</h2>
                 <ul>
-                    <li><a href="http://127.0.0.1:8000/image/"> Image Detection</a></li>
-                    <li><a href="http://127.0.0.1:8000/webcam/"> Live Detection</a></li>
-                    <li><a href="http://127.0.0.1:8000/webcam/"> Group Detection</a></li>
+                    <li><a href="/image"> Image Detection</a></li>
+                    <li><a href="/webcam"> Live Detection</a></li>
+                    <li><a href="/webcam"> Group Detection</a></li>
                 </ul>
             </div>
         </div>

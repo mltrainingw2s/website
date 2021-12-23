@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l#(af+ze*e(_fqv#qq%3_$z-ifqyujed6j0f6p%^wn6z@6iuz9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,9 +76,12 @@ WSGI_APPLICATION = 'mlwebapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mlapps',
+        'HOST': 'localhost',
+        'USER':'root',
+        'PASSWORD':''
+        }
 }
 
 

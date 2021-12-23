@@ -156,12 +156,103 @@
         background-color: white;
         color:var(--footer-color);
     }
-    #product .pro-content .rows
+    #product .pro-content .top
     {
         position: relative;
-        background: red;
+        width: 100%;
+        height:30%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+    }
+    .top .data 
+    {
+        position: relative;
+        width: 50%;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    }
+    .top .data span
+    {
+        position: relative;
+        width: fit-content;
+        top: 25%;
+        border: 1px solid black;
+        font-size: 60px;
+        padding: .4em;
+    }
+    .top .anal 
+    {
+        width: 50%;
+        position: relative;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    }
+    .top .anal span
+    {
+        position: relative;
+        width: fit-content;
+        top: 25%;
+        border: 1px solid black;
+        font-size: 60px;
+        padding: .4em;
+    }
+    #product .pro-content .mid
+    {
+        position: relative;
+        width: 100%;
+        height:40%;
+        display: flex;
+    }
+    .mid .code
+    {
+        width: 100%;
+        position: relative;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    }
+    .mid .code span
+    {
+        position: relative;
+        width: fit-content;
+        top: 30%;
+        border: 1px solid black;
+        font-size: 60px;
+        padding: .4em;
+    }
+    #product .pro-content .down
+    {
+        position: relative;
+        width: 100%;
+        height:30%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .down .imgdt 
+    {
+        position: relative;
+        width: 50%;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    }
+    .down .imgdt span
+    {
+        position: relative;
+        width: fit-content;
+        top: 25%;
+        border: 1px solid black;
+        font-size: 60px;
+        padding: .4em;
+    }
+    .down .webcam 
+    {
+        width: 50%;
+        position: relative;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    }
+    .down .webcam span
+    {
+        position: relative;
+        width: fit-content;
+        top: 25%;
+        border: 1px solid black;
+        font-size: 60px;
+        padding: .4em;
     }
     #product .pro-content .rows span
     {
@@ -343,64 +434,27 @@
     }
     .navss
     {
+        display: none;
         background: var(--nav1-color);
     }
-</style>
-<style>
-    
-    .speciality .box-container{
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap:1.5rem;
-    }
-
-    .speciality .box-container .box{
-        flex:1 1 30rem;
+    .reveal:nth-child(even)
+    {
         position: relative;
-        height: 10%;
-        overflow: hidden;
-        box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
-        border:.1rem solid rgba(0,0,0,.3);
-        cursor: pointer;
-        border-radius: .5rem;
+        transform: translateX(150px);
+        opacity: 0;
+        transition: all 2s ease;
     }
-
-    .speciality .box-container .box .content{
-        height:100%;
-        width:100%;
-        object-fit: cover;
-        position: absolute;
-        top:-100%; left:0;
+    .reveal:nth-child(odd)
+    {
+        position: relative;
+        transform: translateX(-150px);
+        opacity: 0;
+        transition: all 2s ease;
     }
-
-    .speciality .box-container .box .image{
-        text-align: center;
-        background:#fff;
-        padding:2rem;
-    }
-
-    .speciality .box-container .box .content img{
-        margin:1.5rem 0;
-    }
-
-    .speciality .box-container .box .content h3{
-        font-size: 2.5rem;
-        color:#333;
-    }
-
-    .speciality .box-container .box .content p{
-        font-size: 1.6rem;
-        color:#666;
-        padding:1rem 0;
-    }
-
-    .speciality .box-container .box:hover .content{
-        top:0;
-    }
-
-    .speciality .box-container .box:hover .image{
-        transform: translateY(100%);
+    .reveal.active
+    {
+        transform: translateX(0px);
+        opacity: 1;
     }
 
 </style>
@@ -415,80 +469,55 @@
                 <li><a class="links active" href="/">Home</a></li>
                 <li><a class="links" href="#about">About</a></li>
                 <li><a class="links" href="#product">Products</a></li>
-                <li><a class="links" href="http://127.0.0.1:8000/image/">Image</a></li>
-                <li><a class="links" href="http://127.0.0.1:8000/webcam/">Webcam</a></li>
+                <li><a class="links" href="/image">Image</a></li>
+                <li><a class="links" href="/webcam">Webcam</a></li>
             </ul>
         </div>
     </div>
     <section id="main">
     </section>
-    <section class="speciality" id="speciality">
-
-        <!-- <h1 class="heading"> our <span>speciality</span> </h1> -->
-        <br>
-        <div class="box-container">
-    
-            <div class="box">
-                <img class="image" src="/static/img/face.jpg" alt="">
-                <div class="content">
-                    <!-- <img src="images/s-1.png" alt=""> -->
-                    <h3>Digital</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
-                </div>
-            </div>
-            <div class="box">
-                <img class="image" src="/static/img/face.jpg" alt="">
-                <div class="content">
-                    <!-- <img src="images/s-2.png" alt=""> -->
-                    <h3>Data science</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
-                </div>
-            </div>
-            <div class="box">
-                <img class="image" src="/static/img/face.jpg" alt="">
-                <div class="content">
-                    <h3>Algorithm</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
-                </div>
-            </div>
-            <div class="box">
-                <img class="image" src="/static/img/face.jpg" alt="">
-                <div class="content">
-                    <h3>Classification</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
-                </div>
-            </div>
-        </div>
     <section id="home"> 
         <div class="homes">
-            <img src="/static/img/1.png" alt="">
-            <img src="/static/img/2.png" alt="">
+            <img class="reveal" src="/static/img/1.png" alt="">
+            <img class="reveal" src="/static/img/2.png" alt="">
         </div>
     </section>
     <section id="about">
-        <div class="abtimg">
+        <div class="abtimg reveal">
             <img src="/static/img/3.png" alt="">
         </div>
-        <div class="about-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        <div class="about-content reveal">
+            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
     </section>
     <section id="product">
-        <div class="pro-content">
-            <div class="rows">
-                <span><i class="lab la-whatsapp"></i></span>
-                <span><i class="lab la-whatsapp"></i></span>
+        <div class="pro-content reveal">
+            <div class="top">
+                <div class="data">
+                    <span class="las la-project-diagram"></span>
+                </div>
+                <div class="anal">
+                    <span class="las la-chart-bar"></span>
+                </div>
+                
             </div>
-            <br>
-            <div class="rows">
-                <span><i class="lab la-whatsapp"></i></span>
-                <span><i class="lab la-whatsapp"></i></span>
+            <div class="mid">
+                <div class="code">
+                    <span class="las la-laptop-code"></span>
+                </div>
             </div>
-            
+            <div class="down">
+                <div class="imgdt">
+                    <span class="las la-image"></span>
+                </div>
+                <div class="webcam">
+                    <span class="las la-video"></span>
+                </div>
+            </div>
         </div>
-        <div class="proimg">
-            <img src="/static/img/4.png" alt="">
+        <div class="proimg reveal">
+            <img  src="/static/img/4.png" alt="">
         </div>
     </section>
     <section id="footers">
@@ -502,9 +531,9 @@
             <div class="row2">
                 <h2>Products links</h2>
                 <ul>
-                    <li><a href="http://127.0.0.1:8000/image/"> Image Detection</a></li>
-                    <li><a href="http://127.0.0.1:8000/webcam/"> Live Detection</a></li>
-                    <li><a href="http://127.0.0.1:8000/webcam/"> Group Detection</a></li>
+                    <li><a href="/image"> Image Detection</a></li>
+                    <li><a href="/webcam"> Live Detection</a></li>
+                    <li><a href="/webcam"> Group Detection</a></li>
                 </ul>
             </div>
         </div>
@@ -534,6 +563,25 @@
          else{
                  navbar.classList.remove("navss");
              }
+        }
+    </script>
+    <script>
+        window.addEventListener('scroll',reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(i=0; i<reveals.length; i++){
+
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if (revealtop < windowheight -revealpoint){
+                    reveals[i].classList.add('active');
+                }
+                else{
+                    reveals[i].classList.remove('active');
+                }
+            }
         }
     </script>
 </body>
