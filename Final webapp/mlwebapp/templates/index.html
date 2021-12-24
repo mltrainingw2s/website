@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
@@ -17,6 +18,7 @@
         --footer-color:#323236;
         --info: #17a2b8;
         --gray: #6c757d;
+        --red: #ff0000;
     }
     *
     {
@@ -456,7 +458,171 @@
         transform: translateX(0px);
         opacity: 1;
     }
-
+ 
+    #product .pro-content{
+        cursor: pointer;
+    }
+    #product .pro-content .top .data:hover{ 
+        background-color: #458eff;
+    }
+    #product .pro-content .top .data span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .top .anal:hover{ 
+        background-color: #521945;
+    }
+    #product .pro-content .top .anal span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .mid .code:hover{ 
+        background-color: #c53940;
+    }
+    #product .pro-content .mid .code span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .down .imgdt:hover{ 
+        background-color: #90da46;
+    }
+    #product .pro-content .down .imgdt span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .down .webcam:hover{ 
+        background-color: #ca5c3b;
+    }
+    #product .pro-content .down .webcam span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    
+   
+    
+    @media screen and (max-width: 1280px) and (min-height: 799px)
+    {
+        #home .homes {
+            flex-direction: column;
+            padding:.5rem 0;
+        }
+        /* #about .abtimg reveal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            min-height: 100vh;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+        #about .about-content reveal {
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            min-height: 100vh;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        } */
+        
+        #product{
+            flex-direction: column;
+        }
+        #product .pro-content{
+            /* max-width:100px;
+            max-height:100px; */
+            min-height: 100vh;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+        #about{
+            flex-direction: column;
+        }
+        #about .abting{
+            width:100px;
+            max-height: 25px;
+        }
+        #about .abting img{
+            width:100px;
+            color:var(--red);
+        }
+        #about .about-content p{
+            position: relative;
+            top:0px;
+            font-size: 15px;
+            padding: 1em -2em;
+            font-weight: bolder;
+        }
+    @media screen and (max-width: 361px) 
+        {
+        #home .homes {
+        flex-direction: column;
+        }
+        #home .homes img{
+            width :50%; 
+        }
+        #about {
+            flex-direction: column;
+        }
+        #about .abtimg{
+            width: 80%;
+        }
+        #about .abtimg img{
+            width: 80%;
+        }
+        #about .about-content{
+            width: 100%;
+        }
+        #about .about-content p {
+        top: 0px;
+        font-size: 15px;
+        padding: 1em 2em;
+        }
+        #product{
+        width: 100%;
+        flex-direction: column;
+        }
+        #product .pro-content {
+        width: 100%;
+        height: calc(100vh);
+        }  
+    } 
+}
+    /* @media screen and (max-width: 1205px) 
+        {
+        #home .homes {
+        flex-direction: column;
+        }
+        #home .homes img{
+            width :50%; 
+        }
+        #about {
+            flex-direction: column;
+        }
+        #about .abtimg{
+            width: 80%;
+        }
+        #about .abtimg img{
+            width: 80%;
+        }
+        #about .about-content{
+            width: 100%;
+        }
+        #about .about-content p {
+        top: 0px;
+        font-size: 15px;
+        padding: 1em 2em;
+        }
+        #product{
+        width: 100%;
+        flex-direction: column;
+        }
+        #product .pro-content {
+        width: 100%;
+        height: calc(100vh);
+        }  
+    }    
+    } */
 </style>
 
 <body>
@@ -487,8 +653,8 @@
             <img src="/static/img/3.png" alt="">
         </div>
         <div class="about-content reveal">
-            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p >Machine learning is a branch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy
+                Through the use of statistical methods, algorithms are trained to make classifications or predictions, uncovering key insights within data mining projects</p>
         </div>
     </section>
     <section id="product">

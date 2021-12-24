@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'mlapps',
         'HOST': 'localhost',
         'USER':'root',
-        'PASSWORD':''
+        'PASSWORD':'root'
         }
 }
 
