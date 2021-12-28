@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mlapps',
-        'HOST': 'localhost',
+        'HOST': '13.234.21.152',
         'USER':'root',
         'PASSWORD':''
         }
