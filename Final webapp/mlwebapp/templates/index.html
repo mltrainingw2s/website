@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title>w2s_ML</title>
@@ -18,6 +18,7 @@
         --footer-color:#323236;
         --info: #17a2b8;
         --gray: #6c757d;
+        --red: #ff0000;
     }
     *
     {
@@ -457,36 +458,729 @@
         transform: translateX(0px);
         opacity: 1;
     }
-    /* responsive */
-    @media only screen and (max-width: 1200px)
+ 
+    #product .pro-content{
+        cursor: pointer;
+    }
+    #product .pro-content .top .data:hover{ 
+        background-color: #458eff;
+    }
+    #product .pro-content .top .data span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .top .anal:hover{ 
+        background-color: #521945;
+    }
+    #product .pro-content .top .anal span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .mid .code:hover{ 
+        background-color: #c53940;
+    }
+    #product .pro-content .mid .code span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .down .imgdt:hover{ 
+        background-color: #90da46;
+    }
+    #product .pro-content .down .imgdt span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    #product .pro-content .down .webcam:hover{ 
+        background-color: #ca5c3b;
+    }
+    #product .pro-content .down .webcam span:hover{ 
+        background-color:white;
+		transform: scale(1.5);
+    }
+    /* #iphone5 /SE */
+    @media screen and (max-width: 321px) and (min-height: 567px)
     {
-        #home .homes {
+        #main {
+            height: calc(40vh);
+        }
+        #home{
+            align-items: center;
             flex-direction: column;
-            background: red;
+            display: flex;
+        }
+        .homes{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(30vh);
+        }
+        #about {
+            position: relative;
+            height: calc(100vh);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            transform: translateX(0px);
+            opacity: 1;
+            height: calc(50vh);
+            width: calc(30vh);
         }
         
-    }
-    @media only screen and (max-width: 1024px)
+        #about .about-content{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+            
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 13px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 80%;
+            height: calc(50vh);
+            align-items: center;
+        } 
+        .top .data span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .top .anal span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .mid .code span {
+            position: relative;
+            width: fit-content;
+            top: 30%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .imgdt span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .webcam span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(45vh);          
+        }
+        #product .proimg img{
+            position: relative;
+            left: 30px;
+            width: calc(30vh);
+        }
+        #footers {
+            width: 100%;
+            height: 600px;
+            font-size: 10px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10px;
+            margin-left: 50px;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 200px;
+            height: 100px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
+}
+        /* ##iphone6 plus */
+    @media screen and (max-width: 415px) and (min-height:735px)
     {
-        #home .homes {
-            flex-direction: column;
-            background: yellow;
+        #main {
+            height: calc(40vh);
         }
-    }
-    @media only screen and (min-width:500px) and (max-width: 980px)
-    {
-        #home .homes {
+        #home{
+            align-items: center;
             flex-direction: column;
-            background: green;
+            display: flex;
         }
-    }
-    @media only screen and (max-width:499px) {
-        #home .homes {
+        .homes{
+            width: 500%;
+            display: flex;
             flex-direction: column;
-            background: lightblue;
+            height: fit-content;
+            align-items: center;
         }
-    }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(35vh);
+        }
+        #about {
+            position: relative;
+            height: calc(100vh);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
+        }
+        #about .abtimg img{
+            width: 80%;
+            width: calc(40vh);
+        }
+        #about .about-content{
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 15px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 60%; 
+            height: calc(60vh);
+            align-items: center;
+        } 
+        .top .data span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        .top .anal span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        .mid .code span {
+            position: relative;
+            width: fit-content;
+            top: 30%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        .down .imgdt span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size:30px;
+            padding: 0.4em;
+        }
+        .down .webcam span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
+        }
+        #product .proimg img {
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
+        }
+        #footers {
+            width: 100%;
+            height: 600px;
+            font-size: 10px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10px;
+            margin-left: 50px;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 200px;
+            height: 100px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
+} 
+    /* ##iphonex */
+    @media screen and (max-width: 376px) and (min-height:811px)
+        {
+        #main {
+            height: calc(30vh);
+        }
+        #home{
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .homes{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(30vh);
+        }
+        #about {
+            position: relative;
+            height: calc(100vh);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            transform: translateX(0px);
+            opacity: 1;
+            height: calc(50vh);
+            width: calc(30vh);
+        }
+        
+        #about .about-content{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+            
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 15px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 80%;
+            height: calc(50vh);
+            align-items: center;
+        } 
+        .top .data span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .top .anal span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .mid .code span {
+            position: relative;
+            width: fit-content;
+            top: 30%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .imgdt span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .webcam span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(45vh);          
+        }
+        #product .proimg img{
+            position: relative;
+            left: 30px;
+            width: calc(30vh);
+        }
+        #footers {
+            width: 100%;
+            height: 600px;
+            font-size: 10px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10px;
+            margin-left: 50px;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 200px;
+            height: 100px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
+}
 
+    /* #ipad */
+    @media screen and (max-width: 769px) and (min-height: 1023px)
+        {
+        #main {
+            height: calc(50vh);
+        }
+        #home{
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .homes{
+            width: 500%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(40vh);
+        }
+        #about {
+            position: relative;
+            height: calc(100vh);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+             width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            width: 80%;
+            width: calc(40vh);
+        }
+        #about .about-content{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 25px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 60%; 
+            height: calc(60vh);
+            align-items: center;
+        } 
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #product .proimg img {
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #footers {
+            width: 100%;
+            height: 700px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 400px;
+            height: 150px;
+        }
+        #footers .container .row1 p {
+            padding: 0.5em;
+            font-size: 25px;
+        }
+        #footers .container2 {
+            display: flex;
+            height: 60px;
+            padding: 3em;
+            justify-content: center;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
+}
+     
+    
+    
+    
+     /* #ipadpro */
+    @media screen and (max-width: 1025px) and (min-height: 1365px)
+        {
+        #main {
+            height: calc(50vh);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #home{
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .homes{
+            width: 500%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(40vh);
+        }
+        #about {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            transform: translateX(0px);
+            opacity: 1;
+            height: calc(60vh);
+            width: 100%;
+
+        }
+        #about .about-content{
+            width: 50%;
+            height: 50%;
+            text-align: center;
+            top: 0px;
+            font-size: 25px;
+            background: var(--footer-color);
+            color: white;
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 29px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 50%;
+            height: calc(60vh);
+            align-items: center;
+        } 
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        } 
+        #footers {
+            height: 1000px;
+            font-size: 10px; 
+
+        } 
+        #footers .container {
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 400px;
+        }
+        #footers .container .row1 p {
+            font-size: 40px;
+        }
+        #footers .container1 {
+            font-size: 250%;
+        }
+        #footers .container2 {
+            padding: 3em;
+            font-size: 250%;
+        }
+        #footers .container .row2{
+            font-size: 25px;    
+        }
+ }
 </style>
 
 <body>
@@ -515,18 +1209,19 @@
     <section id="about">
         <div class="abtimg reveal">
             <img src="/static/img/3.png" alt="">
-        </div>
+        </div>     
         <div class="about-content reveal">
-            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+            <p >Machine learning is a branch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy
+                Through the use of statistical methods, algorithms are trained to make classifications or predictions, uncovering key insights within data mining projects</p>
+        </div>        
     </section>
     <section id="product">
         <div class="pro-content reveal">
             <div class="top">
                 <div class="data">
                     <span class="las la-project-diagram"></span>
-                </div>
+                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque a.</p> -->
+                </div> 
                 <div class="anal">
                     <span class="las la-chart-bar"></span>
                 </div>
