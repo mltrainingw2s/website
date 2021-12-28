@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
@@ -30,6 +31,22 @@
     html,body{
         scroll-behavior: smooth;
         overflow-x: hidden;
+    }
+    #menu{
+        display: none;
+    }
+    .mobile_nav{
+        display: none;
+    }
+    #menu:checked ~ #navigation{
+        display: none;
+    }
+    #menu:checked ~ .mobile_nav{
+        display: block;
+    }
+    .nav .navs ul label{
+        display: none;
+
     }
     .nav
     {
@@ -456,10 +473,193 @@
         transform: translateX(0px);
         opacity: 1;
     }
+    /* #menu_bar {
+        font-size: 3rem;
+        cursor: pointer;
+        color:#666;
+        border:.1rem solid #666;
+        border-radius: .3rem;
+        padding:.5rem 1.5rem;
+        display: none;
+    } */
+    /* responsive template 1281px */
+    /* motog4 and galaxy s5*/
+    @media screen and (max-width: 361px) and (min-height :639px) 
+    {
+        #home .homes {
+        flex-direction: column;
+        }
+        #home .homes img{
+            width :100%; 
+        }
+        #about {
+            flex-direction: column;
+        }
+        #about .abtimg{
+            width: 80%;
+        }
+        #about .abtimg img{
+            width: 80%;
+        }
+        #about .about-content{
+            width: 100%;
+        }
+        #about .about-content p {
+        top: 0px;
+        font-size: 15px;
+        padding: 1em 2em;
+        }
+        #product{
+        width: 100%;
+        flex-direction: column;
+        }
+        #product .pro-content {        
+        width: 100%;
+        height: calc(100vh);
+        }  
+    }
+    /* galaxy */
+    @media screen and (max-width: 281px) and (min-height :652px) 
+    {
+        #home .homes img{
+            width :100%; 
+        }
+        #about .abtimg {
+            width: 100%;
+        }
+        #about .about-content {
+            width: 100%;
+        }
+        #product .pro-content .mid {    
+            position: relative;
+            width: 100%;
+            height: 40%;
+            display: flex;
+        }
+        #product .proimg {
+            position: relative;
+            width: 100%;
+        }
+        #product .proimg reveal{
+            width: 100%;
+        }
+        #about .about-content {
+            height: 100%;
+            width: 100%;
+        }
+        
+    } 
+    /* surface duo */
+    @media screen and (max-width: 541px) and (min-height :719px) 
+    {
+        #home .homes{
+            flex-direction: column; 
+        }
+        #about {
 
-</style>
+            flex-direction: column;
+        }
+        #about .about-content{
+            width: 100%;
+            height: calc(100vh);
+        }
+        #about .about-content p {
+        top: 0px;
+        font-size: 15px;
+        padding: 1em 2em;
+        }
+        #product{
+            flex-direction: column;
+        }
+        #product .pro-content {
+            width: 100%;
+            height: calc(100vh);
+        }
+    } 
+    /*pixel*/
+    @media screen and (max-width: 442px) and (min-height :730px) 
+    {
+        #about .abtimg {
+            
+            width: calc(10vh);
+            
+        }
+    }
+    /* iphone */
+    @media screen and (max-width: 321px) and (min-height :567px) 
+    {
+        #home .homes {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            /* justify-content: space-between; */
+        }
+        #about {
+        flex-direction: column;
+        }
+        #about .about-content{
+        width: 100%;
+        }
+        #about .abtimg {
+        position: relative;
+        left: 0px;
+        width: 50%;
+        }
+        #about .about-content p {
+        top: 0px;
+        font-size: 15px;
+        padding: 1em 2em;
+        }
+        #product{
+            flex-direction: column;
+        }
+        #product .pro-content {
+            width: 100%;
+            height: calc(100vh);
+        }
+    }
+    /* auto rotate for motog4*/
+    /* @media screen and (max-width: 641px) and (min-height :359px) 
+    {
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(100vh);
+        }
+        * {
+        width: 100%;
+        }
 
+    }
+    /* galaxys5 */
+    /* @media screen and (max-width: 359px) and (min-height :639px) 
+    {
+        #about .abtimg {
+        width: 125%;
+    }
+
+    }  */  
+    /* galazy ford */
+    /* @media screen and (max-width: 718px) and (min-height :511px) 
+    {
+        .reveal.active {
+        transform: translateX(0px);
+        opacity: 1;
+        width: 50%;
+        }
+    } */
+    /* motog4 and galaxy s5 done */
+    /* @media screen and (max-width: 641px) and (min-height :359px) 
+    {
+        .reveal.active {
+        transform: translateX(0px);
+        opacity: 1;
+        width: 100%;
+        }
+    } */
+</style>    
 <body>
+    <input type="checkbox" id="menu">
     <div class="nav" id="navigation">
         <div class="ico">
             <img src="/static/img/w2sicon.png" alt="">
@@ -471,8 +671,29 @@
                 <li><a class="links" href="#product">Products</a></li>
                 <li><a class="links" href="/image">Image</a></li>
                 <li><a class="links" href="/webcam">Webcam</a></li>
+                <label for="menu">
+                    <i class="las la-bars"></i>
+                </label> 
             </ul>
+        </div>   
+    </div>
+    <div class="mobile_nav">
+        <div class="ico">
+            <img src="/static/img/w2sicon.png" alt="">
         </div>
+        <div class="navs">
+            <label for="menu">
+                <i class="las la-times"></i>
+            </label>
+            <ul>
+                <li><a class="links active" href="/">Home</a></li>
+                <li><a class="links" href="#about">About</a></li>
+                <li><a class="links" href="#product">Products</a></li>
+                <li><a class="links" href="/image">Image</a></li>
+                <li><a class="links" href="/webcam">Webcam</a></li>
+                
+            </ul>
+        </div>   
     </div>
     <section id="main">
     </section>
