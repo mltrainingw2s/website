@@ -497,132 +497,690 @@
         background-color:white;
 		transform: scale(1.5);
     }
-    
-   
-    
-    @media screen and (max-width: 1280px) and (min-height: 799px)
+    /* #iphone5 /SE */
+    @media screen and (max-width: 321px) and (min-height: 567px)
     {
-        #home .homes {
-            flex-direction: column;
-            padding:.5rem 0;
+        #main {
+            height: calc(40vh);
         }
-        /* #about .abtimg reveal {
+        #home{
+            align-items: center;
+            flex-direction: column;
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            min-height: 100vh;
-            align-items: center;
-            background-size: cover;
-            background-position: center;
         }
-        #about .about-content reveal {
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            min-height: 100vh;
-            align-items: center;
-            background-size: cover;
-            background-position: center;
-        } */
-        
-        #product{
+        .homes{
+            display: flex;
             flex-direction: column;
-        }
-        #product .pro-content{
-            /* max-width:100px;
-            max-height:100px; */
-            min-height: 100vh;
+            height: fit-content;
             align-items: center;
-            background-size: cover;
-            background-position: center;
         }
-        #about{
-            flex-direction: column;
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(30vh);
         }
-        #about .abting{
-            width:100px;
-            max-height: 25px;
-        }
-        #about .abting img{
-            width:100px;
-            color:var(--red);
-        }
-        #about .about-content p{
+        #about {
             position: relative;
-            top:0px;
-            font-size: 15px;
-            padding: 1em -2em;
+            height: calc(100vh);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            transform: translateX(0px);
+            opacity: 1;
+            height: calc(50vh);
+            width: calc(30vh);
+        }
+        
+        #about .about-content{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+            
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 13px;
+            padding: 1em 2em;    
             font-weight: bolder;
         }
-    @media screen and (max-width: 361px) 
-        {
-        #home .homes {
-        flex-direction: column;
-        }
-        #home .homes img{
-            width :50%; 
-        }
-        #about {
-            flex-direction: column;
-        }
-        #about .abtimg{
-            width: 80%;
-        }
-        #about .abtimg img{
-            width: 80%;
-        }
-        #about .about-content{
-            width: 100%;
-        }
-        #about .about-content p {
-        top: 0px;
-        font-size: 15px;
-        padding: 1em 2em;
-        }
         #product{
-        width: 100%;
-        flex-direction: column;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
         }
         #product .pro-content {
-        width: 100%;
-        height: calc(100vh);
-        }  
-    } 
+            cursor: pointer;
+            width: 80%;
+            height: calc(50vh);
+            align-items: center;
+        } 
+        .top .data span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .top .anal span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .mid .code span {
+            position: relative;
+            width: fit-content;
+            top: 30%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .imgdt span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .webcam span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(45vh);          
+        }
+        #product .proimg img{
+            position: relative;
+            left: 30px;
+            width: calc(30vh);
+        }
+        #footers {
+            width: 100%;
+            height: 600px;
+            font-size: 10px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10px;
+            margin-left: 50px;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 200px;
+            height: 100px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
 }
-    /* @media screen and (max-width: 1205px) 
-        {
-        #home .homes {
-        flex-direction: column;
+        /* ##iphone6 plus */
+    @media screen and (max-width: 415px) and (min-height:735px)
+    {
+        #main {
+            height: calc(40vh);
         }
-        #home .homes img{
-            width :50%; 
+        #home{
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .homes{
+            width: 500%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(35vh);
         }
         #about {
+            position: relative;
+            height: calc(100vh);
+            align-items: center;
             flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
         }
         #about .abtimg{
-            width: 80%;
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
         }
         #about .abtimg img{
             width: 80%;
+            width: calc(40vh);
         }
         #about .about-content{
-            width: 100%;
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
         }
         #about .about-content p {
-        top: 0px;
-        font-size: 15px;
-        padding: 1em 2em;
+            position: relative;
+            top: 0px;
+            font-size: 15px;
+            padding: 1em 2em;    
+            font-weight: bolder;
         }
         #product{
-        width: 100%;
-        flex-direction: column;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
         }
         #product .pro-content {
-        width: 100%;
-        height: calc(100vh);
-        }  
-    }    
-    } */
+            cursor: pointer;
+            width: 60%; 
+            height: calc(60vh);
+            align-items: center;
+        } 
+        .top .data span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        .top .anal span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        .mid .code span {
+            position: relative;
+            width: fit-content;
+            top: 30%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        .down .imgdt span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size:30px;
+            padding: 0.4em;
+        }
+        .down .webcam span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 0.4em;
+        }
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
+        }
+        #product .proimg img {
+            position: relative;
+            left: 0px;
+            width: calc(35vh);
+        }
+        #footers {
+            width: 100%;
+            height: 600px;
+            font-size: 10px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10px;
+            margin-left: 50px;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 200px;
+            height: 100px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
+} 
+    /* ##iphonex */
+    @media screen and (max-width: 376px) and (min-height:811px)
+        {
+        #main {
+            height: calc(30vh);
+        }
+        #home{
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .homes{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(30vh);
+        }
+        #about {
+            position: relative;
+            height: calc(100vh);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            transform: translateX(0px);
+            opacity: 1;
+            height: calc(50vh);
+            width: calc(30vh);
+        }
+        
+        #about .about-content{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+            
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 15px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 80%;
+            height: calc(50vh);
+            align-items: center;
+        } 
+        .top .data span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .top .anal span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .mid .code span {
+            position: relative;
+            width: fit-content;
+            top: 30%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .imgdt span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        .down .webcam span {
+            position: relative;
+            width: fit-content;
+            top: 25%;
+            border: 1px solid black;
+            font-size: 25px;
+            padding: 0.4em;
+        }
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(45vh);          
+        }
+        #product .proimg img{
+            position: relative;
+            left: 30px;
+            width: calc(30vh);
+        }
+        #footers {
+            width: 100%;
+            height: 600px;
+            font-size: 10px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10px;
+            margin-left: 50px;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 200px;
+            height: 100px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
+}
+
+    /* #ipad */
+    @media screen and (max-width: 769px) and (min-height: 1023px)
+        {
+        #main {
+            height: calc(50vh);
+        }
+        #home{
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .homes{
+            width: 500%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(40vh);
+        }
+        #about {
+            position: relative;
+            height: calc(100vh);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            background: #f2f2f2;
+             width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            width: 80%;
+            width: calc(40vh);
+        }
+        #about .about-content{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 25px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 60%; 
+            height: calc(60vh);
+            align-items: center;
+        } 
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #product .proimg img {
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #footers {
+            width: 100%;
+            height: 700px;
+            background: var(--footer-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        } 
+        #footers .container {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 400px;
+            height: 150px;
+        }
+        #footers .container .row1 p {
+            padding: 0.5em;
+            font-size: 25px;
+        }
+        #footers .container2 {
+            display: flex;
+            height: 60px;
+            padding: 3em;
+            justify-content: center;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            box-sizing: border-box;
+            transition: all 0.2s linear;
+            font-family: 'Poppins', sans-serif;
+            list-style: none;
+        }
+}
+     
+    
+    
+    
+     /* #ipadpro */
+    @media screen and (max-width: 1025px) and (min-height: 1365px)
+        {
+        #main {
+            height: calc(50vh);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #home{
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .homes{
+            width: 500%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+        }
+        .reveal.active {
+            transform: translateX(0px);
+            opacity: 1;
+            width: calc(40vh);
+        }
+        #about {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+        #about .abtimg{
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        }
+        #about .abtimg img{
+            transform: translateX(0px);
+            opacity: 1;
+            height: calc(60vh);
+            width: 100%;
+
+        }
+        #about .about-content{
+            width: 50%;
+            height: 50%;
+            text-align: center;
+            top: 0px;
+            font-size: 25px;
+            background: var(--footer-color);
+            color: white;
+        }
+        #about .about-content p {
+            position: relative;
+            top: 0px;
+            font-size: 29px;
+            padding: 1em 2em;    
+            font-weight: bolder;
+        }
+        #product{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            align-items: center;
+            
+        }
+        #product .pro-content {
+            cursor: pointer;
+            width: 50%;
+            height: calc(60vh);
+            align-items: center;
+        } 
+        #product .proimg {
+            position: relative;
+            left: 0px;
+            width: calc(40vh);
+        } 
+        #footers {
+            height: 1000px;
+            font-size: 10px; 
+
+        } 
+        #footers .container {
+            flex-direction: column;
+            height: calc(100vh);
+        }
+        #footers .container .row1 img {
+            width: 400px;
+        }
+        #footers .container .row1 p {
+            font-size: 40px;
+        }
+        #footers .container1 {
+            font-size: 250%;
+        }
+        #footers .container2 {
+            padding: 3em;
+            font-size: 250%;
+        }
+        #footers .container .row2{
+            font-size: 25px;    
+        }
+ }
 </style>
 
 <body>
@@ -651,18 +1209,19 @@
     <section id="about">
         <div class="abtimg reveal">
             <img src="/static/img/3.png" alt="">
-        </div>
+        </div>     
         <div class="about-content reveal">
             <p >Machine learning is a branch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy
                 Through the use of statistical methods, algorithms are trained to make classifications or predictions, uncovering key insights within data mining projects</p>
-        </div>
+        </div>        
     </section>
     <section id="product">
         <div class="pro-content reveal">
             <div class="top">
                 <div class="data">
                     <span class="las la-project-diagram"></span>
-                </div>
+                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque a.</p> -->
+                </div> 
                 <div class="anal">
                     <span class="las la-chart-bar"></span>
                 </div>
