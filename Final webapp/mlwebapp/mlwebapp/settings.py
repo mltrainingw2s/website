@@ -74,17 +74,17 @@ WSGI_APPLICATION = 'mlwebapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'mlapps',
-#         'HOST': '13.234.21.152',
-#         'USER':'root',
-#         'PASSWORD':''
-#         }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mlapps',
+        'HOST': '13.234.21.152',
+        'USER':'root',
+        'PASSWORD':''
+        }
+}
 
-DATABASES ='mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(user='root', password='', server='13.234.21.152', database='mlapps')
+# DATABASES ='mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(user='root', password='', server='13.234.21.152', database='mlapps')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
