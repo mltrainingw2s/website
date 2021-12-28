@@ -22,7 +22,7 @@ from tensorflow.keras.optimizers import Adam
 from imutils.video import VideoStream
 import imutils
 from django.http.response import StreamingHttpResponse
-from mlapps.camera import VideoCamera
+from mlapps.camera import VideoCamera,SnapCamera
 # Create your views here.
 def index(request):
     return render(request,"index.html")
@@ -45,6 +45,7 @@ def imgdetect(request):
         print(result,"result")
         pop = 0
         if result != []:
+            list_smile = []
             for i in result:
                 bounding_box = i["box"]
                 emotions = i["emotions"]
@@ -83,6 +84,7 @@ def imgdetect(request):
                     funny = "Appada sirichitan yevolo puyal vanthalum ,evan matum thapichiruvan!"
                 emotion_score = "{}: {}".format(emotion_name, "{:.0%}".format(score))
                 smile_percent ="{:.0%}".format(score)
+                list_smile.append(smile_percent)
                 print("smile",smile_percent)
                 # print(smile_percent,"this is the smile percentage")
                 cv2.putText(input_image,emotion_score,
@@ -90,17 +92,25 @@ def imgdetect(request):
                         cv2.FONT_HERSHEY_SIMPLEX,0.75,color,2,cv2.LINE_AA,)
                 #Save the result in new image file
                 cv2.imwrite(str(BASE_DIR)+"/static/detectimg/"+str(fie),input_image)
-                save_test = Ml_Image.objects.create(image_upload = str(fie),smile_percentage = content,image_type = 1)
-                get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
-                print("get",get_image)
-            return render(request,"imagedetect.html",{'detect_img':fie,"smile_percent":smile_percent,"content":data,"gallery":get_image,"funny":funny,"pop":pop})
+            print(list_smile,"smile percentaages ")
+            strings=" "
+            commas=","
+            for i in list_smile:
+                print(i)
+                strings += str(i)
+                strings += commas
+            print(strings)
+            save_test = Ml_Image.objects.create(image_upload = str(fie),smile_percentage = content,image_type = 1)
+            get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
+            print("get",get_image)
+            return render(request,"imagedetect.html",{'detect_img':fie,"smile_percent":strings,"content":data,"gallery":get_image,"funny":funny,"pop":pop,"buttons":"block"})
         else:
             pop = 1
             get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
-            return render(request,"imagedetect.html",{'detect_img':"5.png","smile_percent":"80%","gallery":get_image,"pop":pop})
+            return render(request,"imagedetect.html",{'detect_img':"5.png","smile_percent":"80%","gallery":get_image,"pop":pop,"buttons":"none"})
     else:
         get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
-        return render(request,"imagedetect.html",{'detect_img':"5.png","smile_percent":"80%","gallery":get_image})
+        return render(request,"imagedetect.html",{'detect_img':"5.png","smile_percent":"80%","gallery":get_image,"buttons":"none"})
 
 def videodetect(request):
     return render(request,"webcamdetect.html")
@@ -116,6 +126,38 @@ def video_feed(request):
 	return StreamingHttpResponse(gen(VideoCamera()),
                     #video type
 					content_type='multipart/x-mixed-replace; boundary=frame')
+
+class snaps():
+    def __init__(self):
+        self.a="0"
+
+    def gen_image(self,camera):
+        b = self.a
+        # print("cames")
+        # print("This is the self b",self.b)
+        while True:
+            print("This is the self b",b)
+            frame = camera.get_frame(b)
+            yield (b'--frame\r\n'
+                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+            break
+
+    #Method for laptop camera
+    def snap_feed(self,request):
+        b=self.a
+        print(self.a,"sdafsdfasd")
+        return StreamingHttpResponse(self.gen_image(SnapCamera()),
+                        #video type
+                        content_type='multipart/x-mixed-replace; boundary=frame')
+
+    def snapdetect(self,request):
+        print("the body request",request.body.decode('utf-8'))
+        self.d= request.POST.get('buton')
+        print("this is the button value",self.a)
+        if self.d=="q":
+            print("came here")
+            self.a = self.d
+        return render(request,"snapcam.html")
 
 #Method for phone camera
 # def webcam_feed(request):
