@@ -6,7 +6,6 @@ from .models import Ml_Image
 from django.core.files.storage import FileSystemStorage
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
-import cv2
 from PIL import Image
 import numpy as np
 from mtcnn import MTCNN
