@@ -133,11 +133,13 @@
         background: var(--footer-color);
         color: white;
     }
-    #about .about-content p
+    #about .about-content p 
     {
         position: relative;
         top: 250px;
         font-size: 20px;
+        text-align: left;
+        margin: 10px;
         font-weight: bolder;
     }
     #product
@@ -1266,7 +1268,17 @@
      /* #ipadpro */
     @media screen and (max-width: 1025px) and (min-height: 1365px)
     {
-        /* #home .homes 
+        #main 
+        {
+            width: 100%;
+            height: calc(100vh);
+            background: url(/static/img/ipad.jpg);
+            /* background-size: 149% calc(100vh); */
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* filter: blur(5px); */
+        }
+        #home .homes 
         {
             flex-direction: column;
             height: calc(100vh);
@@ -1288,7 +1300,135 @@
             /* width: 100%; */
             /* background: var(--gray); */
             left:50%;
+        }
+        /* #about 
+        {
+            height: calc(100vh);
+            flex-direction: column;
+        }
+        #about .abtimg 
+        {
+            width: 100%;
+            height: calc(50vh);
+        }
+        #about .abtimg img
+        {
+            width: 40%;
+            height:fit-content;
         } */
+        /* #about .about-content 
+        {
+            width: 100%;
+            height: calc(50vh);
+        } */
+        /* #product 
+        {
+            width: 100%;
+            height: calc(100vh);
+            flex-direction: column;
+        } */
+
+    }
+
+    @media screen and (max-width: 1025px) and (min-height: 599px)
+    {
+        #main 
+        {
+            width: 100%;
+            height: calc(100vh);
+            background: url(/static/img/ipad.jpg);
+            /* background-size: 149% calc(100vh); */
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* filter: blur(5px); */
+        }
+        #home .homes 
+        {
+            flex-direction: column;
+            height: calc(100vh);
+            background: white;
+        }
+        #home .homes img
+        {
+            width: 50%;
+        }
+        #home .homes img:nth-child(1)
+        {
+            /* background: var(--gray); */
+            width: 50%;
+            height: 50%;
+        }
+        #home .homes img:nth-child(2)
+        {
+            position: relative;
+            /* width: 100%; */
+            /* background: var(--gray); */
+            left:50%;
+        }
+        /* #about 
+        {
+            height: calc(100vh);
+            flex-direction: column;
+        }
+        #about .abtimg 
+        {
+            width: 100%;
+            height: calc(50vh);
+        }
+        #about .abtimg img
+        {
+            width: 40%;
+            height:fit-content;
+        } */
+        /* #about .about-content 
+        {
+            width: 100%;
+            height: calc(50vh);
+        } */
+        /* #product 
+        {
+            width: 100%;
+            height: calc(100vh);
+            flex-direction: column;
+        } */
+
+    }
+
+    @media only screen and (max-width: 1025px)
+    {
+        #main 
+        {
+            width: 100%;
+            height: calc(100vh);
+            background: url(/static/img/ipad.jpg);
+            /* background-size: 149% calc(100vh); */
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* filter: blur(5px); */
+        }
+        #home .homes 
+        {
+            flex-direction: column;
+            height: calc(100vh);
+            background: white;
+        }
+        #home .homes img
+        {
+            width: 50%;
+        }
+        #home .homes img:nth-child(1)
+        {
+            /* background: var(--gray); */
+            width: 50%;
+            height: 50%;
+        }
+        #home .homes img:nth-child(2)
+        {
+            position: relative;
+            /* width: 100%; */
+            /* background: var(--gray); */
+            left:50%;
+        }
         /* #about 
         {
             height: calc(100vh);
@@ -1326,11 +1466,11 @@
         </div>
         <div class="navs" id="na">
             <ul>
-                <li><a class="links active" href="/">Home</a></li>
+                <li><a class="links active" href="/in">Home</a></li>
                 <li><a class="links" href="#about">About</a></li>
                 <li><a class="links" href="#product">Products</a></li>
-                <li><a class="links" href="/image">Image</a></li>
-                <li><a class="links" href="/webcam">Webcam</a></li>
+                <li><a class="links" href="in/image">Image</a></li>
+                <li><a class="links" href="in/webcam">Webcam</a></li>
             </ul>
         </div>
     </div>
@@ -1347,8 +1487,10 @@
             <img src="/static/img/3.png" alt="">
         </div>     
         <div class="about-content reveal">
-            <p >Machine learning is a branch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy
-                Through the use of statistical methods, algorithms are trained to make classifications or predictions, uncovering key insights within data mining projects</p>
+            <p>Machine learning is a branch of artificial intelligence (AI)</p>
+            <p> computer science which focuses on the use of data and algorithms to imitate the way that humans learn</p> 
+            <p> Through the use of statistical methods we can improving its accuracy</p>
+            <p> algorithms are trained to make classifications or predictions, uncovering key insights within data mining projects</p>
         </div>        
     </section>
     <section id="product">
@@ -1392,9 +1534,9 @@
             <div class="row2">
                 <h2>Products links</h2>
                 <ul>
-                    <li><a href="/image"> Image Detection</a></li>
-                    <li><a href="/webcam"> Live Detection</a></li>
-                    <li><a href="/webcam"> Group Detection</a></li>
+                    <li><a href="in/image"> Image Detection</a></li>
+                    <li><a href="in/webcam"> Live Detection</a></li>
+                    <li><a href="in/webcam"> Group Detection</a></li>
                 </ul>
             </div>
         </div>
