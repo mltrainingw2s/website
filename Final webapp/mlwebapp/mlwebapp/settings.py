@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'mlwebapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mlapps',
+        'NAME': 'test',
         'HOST': '127.0.0.1',
-        'USER':'root',
-        'PASSWORD':''
+        'USER':'test',
+        'PASSWORD':'Way2smile@ml'
         }
 }
 
