@@ -121,7 +121,7 @@ def imgdetect(request):
 def videodetect(request):
     return render(request,"webcamdetect.html")
     
-def gen(camera,request):
+def gen(camera):
 	while True:
 		frame = camera.get_frame()
 		yield (b'--frame\r\n'
@@ -129,7 +129,6 @@ def gen(camera,request):
 
 #Method for laptop camera
 def video_feed(request):
-    
 	return StreamingHttpResponse(gen(VideoCamera()),
                     #video type
 					content_type='multipart/x-mixed-replace; boundary=frame')
