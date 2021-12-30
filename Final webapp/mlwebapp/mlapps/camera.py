@@ -24,6 +24,7 @@ class VideoCamera(object):
     def get_frame(self):
         # detector = MTCNN()
         success, image = self.video.read()
+        print("datas---------------------",success,image)
         self.frame_flip = cv2.flip(image, 1)
         # detector = FER()
         # a=detector.detect_emotions(frame_flip)
@@ -82,7 +83,6 @@ class SnapCamera(object):
     def get_frame(self,data):
         # detector = MTCNN()
         self.data = data
-        print("datas",self.data)
         success, image = self.video.read()
         self.frame_flip = cv2.flip(image, 1)
         # detector = FER()
