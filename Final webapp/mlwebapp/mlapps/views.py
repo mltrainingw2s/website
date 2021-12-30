@@ -43,7 +43,7 @@ def imgdetect(request):
         # im.show()
         print(str(BASE_DIR)) 
         print("sdfsfsfsd")
-        input_image = cv2.imread('/home/ubuntu/img/'+str(imgs))
+        input_image = cv2.imread('D:/newgitsweb/media/'+str(imgs))
         print("aaaaa",input_image)
         # print(input_image,"input image")
         emotion_detector = FER(mtcnn=True)
@@ -121,7 +121,7 @@ def imgdetect(request):
 def videodetect(request):
     return render(request,"webcamdetect.html")
     
-def gen(camera):
+def gen(camera,request):
 	while True:
 		frame = camera.get_frame()
 		yield (b'--frame\r\n'
@@ -129,6 +129,7 @@ def gen(camera):
 
 #Method for laptop camera
 def video_feed(request):
+    
 	return StreamingHttpResponse(gen(VideoCamera()),
                     #video type
 					content_type='multipart/x-mixed-replace; boundary=frame')
