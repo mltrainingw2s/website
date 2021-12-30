@@ -24,6 +24,14 @@ from django.http.response import StreamingHttpResponse
 from mlapps.camera import VideoCamera,SnapCamera
 # Create your views here.
 def index(request):
+    import socket
+    ## getting the hostname by socket.gethostname() method
+    hostname = socket.gethostname()
+    ## getting the IP address using socket.gethostbyname() method
+    ip_address = socket.gethostbyname(hostname)
+    ## printing the hostname and ip_address
+    print(f"Hostname: {hostname}")
+    print(f"IP Address: {ip_address}")
     return render(request,"index.html")
 
 def imgdetect(request):
