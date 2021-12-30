@@ -93,7 +93,7 @@ def imgdetect(request):
                         (bounding_box[0], bounding_box[1] + bounding_box[3] + 30 + 3 * 0),
                         cv2.FONT_HERSHEY_SIMPLEX,0.75,color,2,cv2.LINE_AA,)
                 #Save the result in new image file
-                cv2.imwrite("D:/newgitsweb/detected/"+str(imgs),input_image)
+                cv2.imwrite(str(BASE_DIR)+"/static/detectimg/"+str(imgs),input_image)
             print(list_smile,"smile percentaages ")
             strings=" "
             commas=","
