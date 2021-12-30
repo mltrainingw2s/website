@@ -30,14 +30,17 @@ def imgdetect(request):
     if request.method == "POST" and 'image' in request.FILES:
         print("enter-------------")
         imgs = request.FILES['image']
-        fss = FileSystemStorage()
-        fie = fss.save(imgs.name, imgs)
-        print(fie,"this is file")
+        # fss = FileSystemStorage()
+        # fie = fss.save(imgs.name, imgs)
+        # print(fie,"this is file")
         # print("its coming",imgs)
-        # im =Image.open(imgs)
+        im =Image.open(imgs)
+        im.save('D:/newgitsweb/media/'+str(imgs))
         # im.show()
         print(str(BASE_DIR)) 
-        input_image = cv2.imread(str(BASE_DIR)+'/media/'+str(fie))
+        print("sdfsfsfsd")
+        input_image = cv2.imread('D:/newgitsweb/media/'+str(imgs))
+        print("aaaaa",input_image)
         # print(input_image,"input image")
         emotion_detector = FER(mtcnn=True)
         result = emotion_detector.detect_emotions(input_image)
@@ -90,7 +93,7 @@ def imgdetect(request):
                         (bounding_box[0], bounding_box[1] + bounding_box[3] + 30 + 3 * 0),
                         cv2.FONT_HERSHEY_SIMPLEX,0.75,color,2,cv2.LINE_AA,)
                 #Save the result in new image file
-                cv2.imwrite(str(BASE_DIR)+"/static/detectimg/"+str(fie),input_image)
+                cv2.imwrite("D:/newgitsweb/detected/"+str(imgs),input_image)
             print(list_smile,"smile percentaages ")
             strings=" "
             commas=","
@@ -99,10 +102,10 @@ def imgdetect(request):
                 strings += str(i)
                 strings += commas
             print(strings)
-            save_test = Ml_Image.objects.create(image_upload = str(fie),smile_percentage = content,image_type = 1)
+            save_test = Ml_Image.objects.create(image_upload = str(imgs),smile_percentage = content,image_type = 1)
             get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
             print("get",get_image)
-            return render(request,"imagedetect.html",{'detect_img':fie,"smile_percent":strings,"content":data,"gallery":get_image,"funny":funny,"pop":pop,"buttons":"block"})
+            return render(request,"imagedetect.html",{'detect_img':imgs,"smile_percent":strings,"content":data,"gallery":get_image,"funny":funny,"pop":pop,"buttons":"block"})
         else:
             pop = 1
             get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
