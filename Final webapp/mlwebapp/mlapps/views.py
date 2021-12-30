@@ -22,16 +22,12 @@ from imutils.video import VideoStream
 import imutils
 from django.http.response import StreamingHttpResponse
 from mlapps.camera import VideoCamera,SnapCamera
+from ipware import get_client_ip
+
 # Create your views here.
 def index(request):
-    import socket
-    ## getting the hostname by socket.gethostname() method
-    hostname = socket.gethostname()
-    ## getting the IP address using socket.gethostbyname() method
-    ip_address = socket.gethostbyname(hostname)
-    ## printing the hostname and ip_address
-    print(f"Hostname: {hostname}")
-    print(f"IP Address: {ip_address}")
+    ip = get_client_ip(request)
+    print("this is ip: ",ip)
     return render(request,"index.html")
 
 def imgdetect(request):
