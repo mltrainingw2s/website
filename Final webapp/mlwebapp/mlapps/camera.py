@@ -12,8 +12,10 @@ import time
 
 class VideoCamera(object):
     def __init__(self):
-        self.video = cv2.VideoCapture(0)
+        self.video = cv2.VideoCapture(1)
+        print("slef",self.video)
         (self.grabbed, self.frame_flip) = self.video.read()
+        print("(self.grabbed, self.frame_flip)",(self.grabbed, self.frame_flip))
         threading.Thread(target=self.update, args=()).start()
 
     def __del__(self):
