@@ -12,8 +12,10 @@ import time
 
 class VideoCamera(object):
     def __init__(self):
-        self.video = cv2.VideoCapture(-1)
+        self.video = cv2.VideoCapture(0)
+        print("slef",self.video)
         (self.grabbed, self.frame_flip) = self.video.read()
+        print("(self.grabbed, self.frame_flip)",(self.grabbed, self.frame_flip))
         threading.Thread(target=self.update, args=()).start()
 
     def __del__(self):
@@ -24,7 +26,7 @@ class VideoCamera(object):
     def get_frame(self):
         # detector = MTCNN()
         success, image = self.video.read()
-        self.frame_flip = cv2.flip(image, 1)
+        # self.frame_flip = cv2.flip(image, 1)
         # detector = FER()
         # a=detector.detect_emotions(frame_flip)
         emotion_detector = FER(mtcnn=True)
