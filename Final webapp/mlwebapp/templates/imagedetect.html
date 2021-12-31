@@ -40,6 +40,61 @@
     {
         display: none;
     }
+    .mob_nav .navs
+    {
+        background: #f4f4f4;
+        height: fit-content;
+        padding: .4em;
+    }
+    .mob_nav .navs ul
+    {
+        width: 100%;
+    }
+    .mob_nav .navs ul li
+    {
+        width: 200px;
+        margin: 10px;
+        /* background: red; */
+        padding: .5em;
+    }
+    .mob_nav .navs ul li a
+    {
+        position: relative;
+        text-decoration: none;
+        /* width: 100%; */
+        background: var(--nav1-color);
+        padding: 0.5em 0.7em .5em .7em;
+        box-shadow: 2px 2px 7px rgb(0 0 0 / 40%), inset 4px 4px 8px rgb(255 255 255 / 20%);
+        border-radius: 5px;
+        /* margin: 10px; */
+        color: white;
+    }
+    .mob_nav .navs ul li a:hover
+    {
+        background: white;
+        border-radius: 5px;
+        color:var(--nav1-color);
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
+    .mob_nav .navs ul li .active
+    {
+        background: white;
+        color:var(--nav1-color);
+        border-radius: 5px;
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
+    .mob_nav .navs label i 
+    {
+        width: fit-content;
+        padding: 0.3em;
+        font-size: 18px;
+        box-shadow: 2px 2px 7px rgb(0 0 0 / 40%), inset 4px 4px 8px rgb(255 255 255 / 1%);
+        color: var(--nav1-color);
+        border-radius: 3px;
+        font-weight: bold;
+    }
     #menubar:checked ~ #navigation
     {
         display: none;
@@ -650,7 +705,7 @@
     {
         #navigation .navs ul li 
         {
-            display: none;
+            display: block;
         }
         #browse .container form div 
         {
@@ -683,7 +738,7 @@
     {
         #navigation .navs ul li 
         {
-            display: none;
+            display: block;
         }
         #browse 
         {
@@ -755,42 +810,9 @@
     /* responsive template 1024px only */
     @media screen and (max-width: 1024px)
     {
-        .nav .navs ul label
-        {
-            display: block;
-        }
-        .nav .navs ul label i
-        {   
-            position: relative;
-            top: -5%;
-            font-size: 35px;
-            /* border: 1px solid white; */
-            width: fit-content;
-            padding: 0.1em;
-        }
-        .nav .navs ul label i:hover
-        {
-            cursor: pointer;
-            transition: .2s linear;
-            background: #f4f4f4;
-            color:var(--nav1-color);
-            box-shadow:inset 3px 3px 6px rgba(0,0,0,0.5);
-            border-radius: 6px;
-
-        }
         #navigation .navs ul li 
         {
-            display: none;
-        }
-        #menubar:checked ~ #navigation
-        {
-            display: none;
-        }
-        #menubar:checked ~ .mob_nav
-        {
-            background: var(--nav1-color);
             display: block;
-            transition: all .5s linear;
         }
         #browse 
         {
@@ -858,9 +880,162 @@
             box-shadow: 4px 4px 10px rgb(0,0,0,.5);
         }
     }
+    /* responsive template 1024px only */
+    @media screen and (max-width: 900px)
+    {
+        #navigation .navs ul li 
+        {
+            display: none;
+        }
+        .nav .navs ul label
+        {
+            display: block;
+        }
+        .nav .navs ul label i
+        {   
+            position: relative;
+            top: -5%;
+            font-size: 35px;
+            /* border: 1px solid white; */
+            width: fit-content;
+            padding: 0.1em;
+        }
+        .nav .navs ul label i:hover
+        {
+            cursor: pointer;
+            transition: .2s linear;
+            background: #f4f4f4;
+            color:var(--nav1-color);
+            box-shadow:inset 3px 3px 6px rgba(0,0,0,0.5);
+            border-radius: 6px;
+
+        }
+        #menubar:checked ~ #navigation
+        {
+            display: none;
+        }
+        #menubar:checked ~ .mob_nav
+        {
+            background: var(--nav1-color);
+            display: block;
+            transition: all .5s linear;
+        }
+        #menubar:checked ~ .mob_nav .ico
+        {
+            animation: reveal 0.4s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs
+        {
+            animation: reveal 0.3s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs ul li
+        {
+            animation: reveals .7s linear;
+        }
+        @keyframes reveal {
+            from 
+            {
+                transform: translateY(-300px);
+            }
+            to
+            {
+                transform: translateY(0px);
+            }
+        }
+        #footers
+        {
+            height: fit-content;
+        }
+        #footers .container
+        {
+            flex-direction: column;
+        }
+        #footers .container .row2
+        {
+            position: relative;
+            width: 90%;
+        }
+        #footers .container .row1 
+        {
+            width: 80%;
+        }
+        #footers .container .row2 h2
+        {
+            position: relative;
+            background: var(--info);
+            text-align: center;
+        }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(20vh);
+            display: flex;
+        }
+        #footers .container .row2 ul li
+        {
+            position: relative;
+            top: 25%;
+            left:15%;
+        }
+    }
+        @keyframes reveals {
+            from 
+            {
+                transform: translateX(700px);
+            }
+            to
+            {
+                transform: translateX(0px);
+            }
+        }
     /* responsive template 768px height 1024px */
     @media screen and (max-width: 769px) and (min-height: 1023px)
     {
+        
+        
+        #menubar:checked ~ #navigation
+        {
+            display: none;
+        }
+        #menubar:checked ~ .mob_nav
+        {
+            background: var(--nav1-color);
+            display: block;
+            transition: all .5s linear;
+        }
+        #menubar:checked ~ .mob_nav .ico
+        {
+            animation: reveal 0.4s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs
+        {
+            animation: reveal 0.3s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs ul li
+        {
+            animation: reveals .7s linear;
+        }
+        @keyframes reveal {
+            from 
+            {
+                transform: translateY(-300px);
+            }
+            to
+            {
+                transform: translateY(0px);
+            }
+        }
+        @keyframes reveals {
+            from 
+            {
+                transform: translateX(700px);
+            }
+            to
+            {
+                transform: translateX(0px);
+            }
+        }
         #footers
         {
             height: fit-content;
@@ -901,6 +1076,18 @@
     /* responsive template 768px  */
     @media screen and (max-width: 769px)
     {
+        #browse .container .cols 
+        {
+            margin-right: 8%;
+        }
+        #browse .container .prev img 
+        {
+            left: 3%;
+        }
+        .gallery .card 
+        {
+            left: 15%;
+        }
         #footers
         {
             height: fit-content;
@@ -928,7 +1115,7 @@
         {
             position: relative;
             background: var(--gray);
-            height: calc(7vh);
+            height: calc(20vh);
             display: flex;
         }
         #footers .container .row2 ul li
@@ -936,6 +1123,70 @@
             position: relative;
             top: 25%;
             left:15%;
+        }
+    }
+    /* responsive rotate 414 */
+    @media screen and (max-width: 737px) and (min-height: 413px)
+    {
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(20vh);
+            display: flex;
+        }
+    }
+    /* responsive 540px and 720px */
+    @media screen and (max-width: 721px) and (min-height: 539px)
+    {
+        #browse .container form div label 
+        {
+            font-size: 15px;
+        }
+        #browse .container form div input[type="submit"] 
+        {
+            font-size: 15px;
+        }
+        .gallery .card 
+        {
+            left: 1%;
+        }
+        #footers .container .row2 ul 
+        {
+            height: fit-content;
+            flex-direction: column;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 30%;
+        }
+        #footers .container .row1 img 
+        {
+            width: 230px;
+            height: 100px;
+        }
+        #browse .container1 p 
+        {
+            font-size: 13px;
+        }
+    }
+    /* responsive 540px and 720px */
+    @media screen and (max-width: 634px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        .gallery .card 
+        {
+            left: 18%;
+        }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(20vh);
+            display: flex;
         }
     }
     /* responsive 540px and 720px */
@@ -947,7 +1198,7 @@
         }
         #browse .container .prev img 
         {
-            left: 5%;
+            left: 3%;
         }
         .gallery .card 
         {
@@ -968,21 +1219,35 @@
             height: 100px;
         }
     }
-
-    /* responsive 540px and 720px */
-    @media screen and (max-width: 721px) and (min-height: 539px)
+    /* responsive 540px */
+    @media screen and (max-width: 540px)
     {
-        #browse .container form div label 
+        .nav .navs ul 
         {
-            font-size: 15px;
+            right: 10px;
         }
-        #browse .container form div input[type="submit"] 
+        .nav .ico img 
         {
-            font-size: 15px;
+            left: 0px;
+            width: 50%;
+        }
+        #browse .container .cols 
+        {
+            margin-right: 8%;
+        }
+        #browse .container .prev img 
+        {
+            left: 1%;
+            width: 100%;
+        }
+        #browse .container .prev 
+        {
+            width: 90%;
+            height: 400px;
         }
         .gallery .card 
         {
-            left: 6%;
+            left: 5%;
         }
         #footers .container .row2 ul 
         {
@@ -995,12 +1260,8 @@
         }
         #footers .container .row1 img 
         {
-            width: 230px;
+            width: 199px;
             height: 100px;
-        }
-        #browse .container1 p 
-        {
-            font-size: 13px;
         }
     }
     /* responsive 540px and 720px */
@@ -1030,13 +1291,139 @@
             left: 0%;
             width: 100%;
         }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            display: flex;
+        }
     }
-    @media all and (max-width: 361px)
+    /* responsive 411px */
+    @media screen and (max-width: 412px) and (min-height: 730px)
     {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        .nav .ico img 
+        {
+            left: 0px;
+            width: 50%;
+        }
+        .nav .navs ul label i 
+        {
+            position: relative;
+            top: -5%;
+            font-size: 35px;
+            /* border: 1px solid white; */
+            width: fit-content;
+            padding: 0.1em;
+        }
+    }
+    @media screen and (max-width: 380px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        #browse .container .col 
+        {
+            margin-left: 10%;
+        }
+        #browse .container .cols 
+        {
+            font-size: 13px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+            font-size: 12px;
+        }
+        #footers .container .row1 img {
+            width: 159px;
+            height: 70px;
+        }
+    }
+
+    /* responsive 411px */
+    @media screen and (max-width: 376px) and (min-height: 811px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        #browse .container .col 
+        {
+            margin-left: 10%;
+        }
+        #browse .container .cols 
+        {
+            font-size: 13px;
+        }
+    }
+    @media screen and (max-width: 376px) and (min-height: 666px)
+    {
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+            font-size: 12px;
+        }
+    }
+    
+    @media screen and (max-width: 361px) and (min-height: 639px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
         #browse .container 
         {
             width: 100%;
-            background: red;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 20%;
+        }
+    }
+
+    @media screen and (max-width: 350px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        #browse .container 
+        {
+            width: 100%;
+        }
+        #browse .container .one {
+            font-size: 12px;
+        }
+        #browse .container .col {
+            font-size: 12px;
+        }
+        #browse .container .cols {
+            font-size: 11px;
+        }
+        #footers .container .row1 p {
+            font-size: 15px;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 20%;
+        }
+    }
+    @media screen and (max-width: 320px)
+    {
+        .gallery .card 
+        {
+            left: 1%;
+            width: 90%;
+        }
+        .gallery .card img 
+        {
+            width: 100%;
+            height: 280px;
         }
     }
 
@@ -1149,9 +1536,9 @@
             <div class="row2">
                 <h2>Products links</h2>
                 <ul>
-                    <li><a href="in/image"> Image Detection</a></li>
-                    <li><a href="in/webcam"> Live Detection</a></li>
-                    <li><a href="in/webcam"> Group Detection</a></li>
+                    <li><a href="/image"> Image Detection</a></li>
+                    <li><a href="/webcam"> Live Detection</a></li>
+                    <li><a href="/webcam"> Group Detection</a></li>
                 </ul>
             </div>
         </div>
