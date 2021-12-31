@@ -26,7 +26,7 @@ class VideoCamera(object):
     def get_frame(self):
         # detector = MTCNN()
         success, image = self.video.read()
-        # self.frame_flip = cv2.flip(image, 1)
+        self.frame_flip = cv2.flip(image, 1)
         # detector = FER()
         # a=detector.detect_emotions(frame_flip)
         emotion_detector = FER(mtcnn=True)
