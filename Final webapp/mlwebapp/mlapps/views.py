@@ -39,7 +39,7 @@ def imgdetect(request):
         # print(fie,"this is file")
         # print("its coming",imgs)
         im =Image.open(imgs)
-        im.save('/home/ubuntu/img/'+str(imgs))
+        im.save('D:/newgitsweb/media/'+str(imgs))
         # im.show()
         print(str(BASE_DIR)) 
         print("sdfsfsfsd")
