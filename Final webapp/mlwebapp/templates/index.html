@@ -1614,39 +1614,76 @@
         {
             width: 50%;
         }
+        #home .homes .cont 
+        {
+            top: -8%;
+            left:35%;
+            background: transparent;
+        }
         #home .homes img:nth-child(1)
         {
             /* background: var(--gray); */
+            /* top:-8%; */
             width: 50%;
             height: 50%;
         }
-        #home .homes img:nth-child(2)
+        #home .homes img:nth-child(3)
         {
-            position: relative;
-            /* width: 100%; */
-            /* background: var(--gray); */
-            left:50%;
+            top: -10%;
+            /* position: relative; */
+            right: -50%;
         }
-        /* #about 
+        #about 
         {
-            height: calc(100vh);
+            height: calc(200vh);
             flex-direction: column;
         }
         #about .abtimg 
         {
             width: 100%;
-            height: calc(50vh);
+            height: calc(100vh);
         }
         #about .abtimg img
         {
-            width: 40%;
+            width: 80%;
             height:fit-content;
-        } */
-        /* #about .about-content 
+        }
+        #about .about-content 
         {
             width: 100%;
+            height: calc(100vh);
+        }
+        #about .about-content p 
+        {
+            font-size: 30px;
+            margin-bottom: 100px;
+        }
+        #product 
+        {
+            flex-direction: column;
+            height: calc(180vh);
+        }
+        #product .pro-content 
+        {
+            width: 100%;
+            height: calc(100vh);
+        }
+        #product .proimg 
+        {
+            position: relative;
+            width: 100%;
             height: calc(50vh);
-        } */
+        }
+        #product .proimg img {
+            position: relative;
+            float: right;
+            top: 100px;
+            width: 60%; 
+        }
+        #footer
+        {
+            overflow: hidden;
+        }
         /* #product 
         {
             width: 100%;
@@ -1668,49 +1705,68 @@
             background-size: contain;
             /* filter: blur(5px); */
         }
+        #home
+        {
+            height:calc(100vh);
+        }
         #home .homes 
         {
-            flex-direction: column;
             height: calc(100vh);
             background: white;
         }
         #home .homes img
         {
-            width: 50%;
+            width: 30%;
         }
         #home .homes img:nth-child(1)
         {
-            /* background: var(--gray); */
-            width: 50%;
-            height: 50%;
+            background: var(--gray);
+            width: 30%;
         }
         #home .homes img:nth-child(2)
         {
             position: relative;
-            /* width: 100%; */
-            /* background: var(--gray); */
-            left:50%;
+            width: 30%;
+            background: var(--gray);
+            /* left:1000px; */
         }
-        /* #about 
+        #home .homes .cont 
+        {
+            top: 200px;
+        }
+        #about 
         {
             height: calc(100vh);
-            flex-direction: column;
         }
         #about .abtimg 
         {
             width: 100%;
-            height: calc(50vh);
         }
         #about .abtimg img
         {
-            width: 40%;
+            width: 70%;
             height:fit-content;
-        } */
-        /* #about .about-content 
+        }
+        #about .about-content p 
+        {
+            position: relative;
+            top: 100px;
+            font-size: 15px;
+            text-align: left;
+            margin: 10px;
+            font-weight: bolder;
+        }
+        #about .about-content 
         {
             width: 100%;
-            height: calc(50vh);
-        } */
+        }
+        #product .proimg img
+        {
+            position: relative;
+            width: 70%;
+            height: fit-content;
+            float: right;
+        }
         /* #product 
         {
             width: 100%;
@@ -1718,18 +1774,6 @@
             flex-direction: column;
         } */
 
-    }
-    @media only screen and (min-width:1026px)
-    {
-        /* #main 
-        {
-            width: 100%;
-            height: calc(100vh);
-            background: url(/static/img/nest.jpg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            filter: blur(5px);
-        } */
     }
     @media only screen and (max-width: 1025px)
     {
@@ -1743,7 +1787,7 @@
             background-size: cover;
             filter: blur(5px);
         } */
-        #home .homes 
+        /* #home .homes 
         {
             flex-direction: column;
             height: calc(100vh);
@@ -1755,17 +1799,17 @@
         }
         #home .homes img:nth-child(1)
         {
-            /* background: var(--gray); */
+            background: var(--gray);
             width: 50%;
             height: 50%;
         }
         #home .homes img:nth-child(2)
         {
             position: relative;
-            /* width: 100%; */
-            /* background: var(--gray); */
+            width: 100%;
+            background: var(--gray);
             left:50%;
-        }
+        } */
         /* #about 
         {
             height: calc(100vh);
