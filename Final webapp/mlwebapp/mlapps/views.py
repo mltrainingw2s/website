@@ -157,12 +157,12 @@ class snaps():
                         content_type='multipart/x-mixed-replace; boundary=frame')
 
     def snapdetect(self,request):
-        print("the body request",request.body.decode('utf-8'))
-        self.d= request.POST.get('buton')
-        print("this is the button value",self.a)
-        if self.d=="q":
-            print("came here")
-            self.a = self.d
+        # print("the body request",request.body.decode('utf-8'))
+        # self.d= request.POST.get('buton')
+        # print("this is the button value",self.a)
+        # if self.d=="q":
+        #     print("came here")
+        #     self.a = self.d
         return render(request,"snapcam.html")
 
 #Method for phone camera
