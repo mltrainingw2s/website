@@ -1,83 +1,1509 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+    <style>
+        #camera{
+            margin-left: 10px;
+        width: 80%;
+        justify-content: center;
+        border-radius: 5px;
+        box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+        }
+    :root
+    {
+        --nav-color:#ee0b42;
+        --nav1-color:#6610f2;
+        --footer-color:#323236;
+        --info: #17a2b8;
+        --gray: #6c757d;
+    }
+    *
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.5s linear;
+        font-family: 'Poppins', sans-serif;
+        list-style: none;
+    }
+    html,body{
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+    }
+    #menubar
+    {
+        display: none;
+    }
+    .mob_nav
+    {
+        display: none;
+    }
+    .mob_nav .navs
+    {
+        background: #f4f4f4;
+        height: fit-content;
+        padding: .4em;
+    }
+    .mob_nav .navs ul
+    {
+        width: 100%;
+    }
+    .mob_nav .navs ul li
+    {
+        width: 200px;
+        margin: 10px;
+        /* background: red; */
+        padding: .5em;
+    }
+    .mob_nav .navs ul li a
+    {
+        position: relative;
+        text-decoration: none;
+        /* width: 100%; */
+        background: var(--nav1-color);
+        padding: 0.5em 0.7em .5em .7em;
+        box-shadow: 2px 2px 7px rgb(0 0 0 / 40%), inset 4px 4px 8px rgb(255 255 255 / 20%);
+        border-radius: 5px;
+        /* margin: 10px; */
+        color: white;
+    }
+    .mob_nav .navs ul li a:hover
+    {
+        background: white;
+        border-radius: 5px;
+        color:var(--nav1-color);
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
+    .mob_nav .navs ul li .active
+    {
+        background: white;
+        color:var(--nav1-color);
+        border-radius: 5px;
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
+    .mob_nav .navs label i 
+    {
+        width: fit-content;
+        padding: 0.3em;
+        font-size: 18px;
+        box-shadow: 2px 2px 7px rgb(0 0 0 / 40%), inset 4px 4px 8px rgb(255 255 255 / 1%);
+        color: var(--nav1-color);
+        border-radius: 3px;
+        font-weight: bold;
+    }
+    #menubar:checked ~ #navigation
+    {
+        display: none;
+    }
+    .nav
+    {
+        position:relative;
+        background: var(--nav1-color);
+        color:white;
+        width:100%;
+        height:80px;
+        display: flex; 
+        justify-content: space-between;
+        box-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+    }
+    .nav .ico
+    {
+        width: 50%;        
+    }
+    .nav .ico img
+    {
+        position: relative;
+        top: 3px;
+        left:100px;
+    }
+    .nav .navs
+    {
+        width: 50%;
+    }
+    .nav .navs ul 
+    {
+        position: relative;
+        float: right;
+        margin-top: 30px;
+        right:100px;
+        list-style: none;
+        display: flex;
+    }
+    .nav .navs ul label
+    {
+        display: none;
+    }
+    .nav .navs ul li
+    {
+        position: relative;   
+        margin-left: 20px;
+    }
+    .nav .navs ul li a
+    {
+        font-size: 19px;
+        padding: 0.3rem .7rem 0.3rem .7rem;
+        text-decoration: none;
+        color:white;
+    }
+    .nav .navs ul li:hover a
+    {
+        background: white;
+        color:var(--nav1-color);
+        border-radius: 5px;
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
+    .nav .navs ul li .active
+    {
+        background: white;
+        color:var(--nav1-color);
+        border-radius: 5px;
+        box-shadow: 
+                    inset 2px 2px 7px rgba(0,0,0,0.4);
+    }
+    /* navbar ends here */
+    /* head content */
+    .head{
+        background:var(--nav1-color);
+        text-align: center;
+        color: white;
+        padding: .5em .6em .5em .6em;
+    }
+    /* ends head */
+    /* browse section starts here */
+    #browse 
+    {
+        position: relative;
+        width: 100%;
+        display: flex;
+        height:calc(100vh);
+    }
+    #browse .container
+    {
+        width: 50%;
+        height: 100%;
+        margin-top:10px;
+        /* background: url("/static/img/1.png");
+        background-repeat: no-repeat; */
+    }
+    #browse .container .col
+    {
+        background: #25d366;
+        color:white;
+        width: fit-content;
+        font-weight: bolder;
+        text-align: center;
+        padding: .4em;
+        margin-left: 20%;
+    }
+    #browse .container .one
+    {
+        position: relative;
+        left:3%;
+    }
+    #browse .container p span:before
+    {
+        content: '';
+        animation: change 5s infinite;
+        background: var(--info);
+        color: white;
+        padding: 0.3em .6em .3em .6em;
+        font-weight: bolder;
+        border-radius: 4px;
+    }
 
+    @keyframes change
+    {
+        0%
+        {
+            content: ' are you in that moment ?';
+            background: var(--info);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+        30%
+        {
+            content: ' your friends in that moment ?';
+            background: var(--footer-color);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+        60%
+        {
+            content: ' Your collegues in that moment ?';
+            background: var(--nav-color);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+        100%
+        {
+            content: 'your parents in that moment ?';
+            background: var(--nav1-color);
+            color: white;
+            padding: 0.3em .6em .3em .6em;
+        }
+    }
+    #browse .container .cols
+    {
+        float: right;
+        margin-right:20%;
+        border-radius: 5px;
+        background: #4267B2;
+        color:white;
+        width: fit-content;
+        font-weight: bolder;
+        padding: .4em;
+    }
+
+    #browse .container form div
+    {
+        width: 25%;
+        display: flex;
+        /* flex-direction: column; */
+        float: right;
+        justify-content: space-evenly;
+        margin-right: 20px;
+    }
+    #browse .container form div label
+    {
+        position: relative;
+        float: right;
+        background: White;
+        color:var(--nav-color);
+        cursor: pointer;
+        text-align: center;
+        font-weight: bolder;
+        padding: .5em .7em .5em .7em;
+        border:1px solid var(--nav-color);
+        border-radius: 5px;
+    }
+    #browse .container form div label:hover
+    {
+        background: var(--nav-color);
+        color:white;
+    }
+    #browse .container form div input[type="submit"]
+    {
+        position: relative;
+        float: right;
+        background: var(--nav1-color);
+        color: white;
+        border-radius: 5px;
+        padding: 0.5em 1em .5em 1em;
+        font-family: 'Poppins',sans-serif;
+        font-size: 19px;
+        cursor: pointer;
+        border:none;
+    }
+    #browse .container .prev
+    {
+        width: 100%;
+    }
+    #browse .container .prev img
+    {   
+        margin-left: 10px;
+        width: 80%;
+        justify-content: center;
+        border-radius: 5px;
+        box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    }
+    #browse .container1
+    {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        /* justify-content: center; */
+        background: #6610f2;
+    }
+    #browse .container1 img
+    {
+        margin-left: 5%;
+        width:80%;
+        height:50%;
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+        border-radius: 10px;
+    }
+    #browse .container1 p
+    {
+        background: #f4f4f4;
+        width: fit-content;
+        margin-left: 20%;
+        padding: 2em 4em 2em 4em;
+        border-radius: 5px;
+        font-size: 17px;
+    }
+    #browse .container1 .con
+    {
+        background: transparent;
+        color: white;
+        width: fit-content;
+        margin-left: 20%;
+        padding: 2em 4em 2em 4em;
+        border-radius: 5px;
+        font-size: 17px;
+    }
+    #browse .container1 p span
+    {
+        background: var(--info);
+        color:white;
+        font-weight: bolder;
+        padding: 0.2em .5em .2em .5em;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    #browse .container1 .content
+    {
+        position: relative;
+        left:10%;
+        width: 500px;
+        /* background: tra; */
+    }
+    #browse .container1 .fun
+    {
+        position: relative;
+        width: 100%;
+        
+        height:fit-content;
+    }
+    
+
+
+    /* browse ends here */
+
+    /* Footer Starts here */
+    #footers
+    {
+        width: 100%;
+        height:fit-content;
+        background: var(--footer-color);
+        color: white;
+        display: flex;
+        flex-direction: column;
+    }
+    #footers .container
+    {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 10px;
+        margin-left: 50px;
+    }
+    #footers .container .row1
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    #footers .container .row1 img
+    {
+        width: 300px;
+        height: 150px;
+    }
+    #footers .container .row1 p
+    {
+        padding: 0.5em;
+        font-size: 18px;
+    }
+    #footers .container .row2 ul li
+    {
+        padding:.4em;
+        cursor: pointer;
+    }
+    #footers .container .row2 ul li a
+    {
+        color: white;
+        text-decoration: none;
+        
+    }
+    #footers .container .row2 ul li:hover a
+    {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        background: white;
+        font-weight:bold ;
+        color:var(--nav1-color);
+    }
+    #footers .container1
+    {
+        display: flex;
+        height: 50px;
+        justify-content: center;
+    }
+    #footers .container1 p a:hover
+    {
+        animation: anim 0.8s alternate linear;
+    }
+    @keyframes anim
+    {
+        0%{
+            background: white;
+            opacity: 0.5;
+            color:var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
+        25%
+        {
+            background: var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
+        50%
+        {
+            opacity: 1;
+            background: white;
+            color:var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
+        100%{
+            background: var(--nav1-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transition: all .5s linear;
+        }
+    }
+    #footers .container2
+    {
+        display: flex;
+        height: 60px;
+        justify-content: center;
+    }
+    #footers .container2 ul
+    {
+        display: flex;
+    }
+    #footers .container2 ul li
+    {
+        position: relative;
+        margin-left: 10px;
+    }
+    #footers .container2 ul li a i
+    {
+        font-size: 25px;
+    }
+    #footers .container2 ul li:nth-child(1) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: var(--footer-color);
+        color:#25d366;
+    }
+    #footers .container2 ul li:nth-child(2) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: var(--footer-color);
+        color:#4267B2;
+    }
+    #footers .container2 ul li:nth-child(3) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: var(--footer-color);;
+        color: white;
+    }
+    #footers .container2 ul li:nth-child(4) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: var(--footer-color);
+        color:#FF0000;
+    }
+    #footers .container2 ul li:nth-child(5) a i
+    {
+        border-radius: 50%;
+        padding: .1em;
+        background: var(--footer-color);
+        color:#0077b5;
+    }
+    #footers .container2 ul li:nth-child(1) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        background:#25d366;
+        transition: 0.2s linear;
+    }
+    #footers .container2 ul li:nth-child(2) a i:hover
+    {
+        transition: 0.2s linear;
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        background:#4267B2;
+    }
+    #footers .container2 ul li:nth-child(3) a i:hover
+    {
+        transition: 0.2s linear;
+        border-radius: 50%;
+        padding: .1em;
+        color:  white;
+        background: linear-gradient(to bottom right, #fb3958, #458eff);
+    }
+    #footers .container2 ul li:nth-child(4) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        transition: 0.2s linear;
+        background:#FF0000;
+    }
+    #footers .container2 ul li:nth-child(5) a i:hover
+    {
+        border-radius: 50%;
+        padding: .1em;
+        color: white;
+        background:#0077b5;
+        transition: 0.2s linear;
+    }
+    #footers .container1 p a 
+    {
+        color: White;
+        text-decoration: none;
+        background: var(--nav1-color);
+        padding: .3rem .7rem .3rem .7rem;
+        
+    }
+    .gallery
+    {
+        display: flex;
+        flex-wrap: wrap;
+        overflow-x: hidden;
+    }
+    .gallery .card
+    {
+        position: relative;
+        background: #f4f4f4;
+        margin: 5px;
+        box-shadow: 2px 2px 7px rgba(0,0,0,0.4);
+        border-radius: 10px;
+    }
+    .gallery .card img
+    {
+        width: 300px;
+        height: 300px;
+    }
+    .gallery .card p
+    {
+        position: relative;
+        left:50%;
+    }
+    ::-webkit-scrollbar
+    {
+        width: 15px;
+    }
+    ::-webkit-scrollbar-thumb
+    {
+        background: var(--nav1-color);
+        border-radius: 10px;
+        box-shadow:  inset 0px 2px 5px rgba(255,255,255,0.7);
+    }
+    ::-webkit-scrollbar-thumb:hover
+    {
+        background: rgba(102, 16,242,0.5);
+        cursor: pointer;
+    }
+    ::-webkit-scrollbar-track
+    {
+        background: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: inset 3px 3px 6px rgba(0,0,0,0.6);
+    }
+    /* responsive template 1281px */
+    @media screen and (min-width: 1281px)
+    {
+        #browse .container .prev 
+        {
+            width: 100%;
+            height: 400px;
+        }
+        #browse .container .prev img 
+        {
+            left: 10%;
+            top: 15px;
+            position: relative;
+            height:300px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+        }
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+
+    }
+    /* resonsive template 1280px */
+    @media screen and (max-width: 1280px)
+    {
+        #browse .container .prev 
+        {
+            width: 100%;
+            height: 400px;
+        }
+        #browse .container .prev img 
+        {
+            left: 10%;
+            top: 15px;
+            position: relative;
+            height:300px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+        }
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+
+    }
+    /* responsive template 1280px height 799px*/
+
+    @media screen and (max-width: 1280px) and (min-height: 799px)
+    {
+        #browse .container .prev 
+        {
+            width: 100%;
+            height: 400px;
+        }
+        #browse .container .prev img 
+        {
+            left: 10%;
+            top: 15px;
+            position: relative;
+            height:300px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+        }
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+
+    }
+    /* responsive template 1024px*/
+
+    @media screen and (max-width: 1024px) and (min-height: 599px)
+    {
+        #navigation .navs ul li 
+        {
+            display: block;
+        }
+        #browse .container form div 
+        {
+            width: 50%;
+            float: left;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+            padding: 1em 2em 1em 1em;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .nav .navs ul li a {
+            font-size: 15px;
+        }
+        #browse .container form div label {
+            padding: 0.3em 0.5em 0.3em 0.4em;
+            font-size: 15px;
+            width: fit-content;
+            height: fit-content;
+        }
+        #browse .container form div input[type="submit"] {
+            padding: 0.3em 0.5em 0.3em 0.5em;
+            font-size: 16px;
+        }
+    }
+    /* responsive template 1024px height 1366px */
+    @media screen and (max-width: 1024px) and (min-height: 1365px)
+    {
+        #navigation .navs ul li 
+        {
+            display: block;
+        }
+        #browse 
+        {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+        #browse .container 
+        {
+            width: 100%;
+            background: #f4f4f4;
+        }
+        #browse .container .one 
+        {
+            font-size: 25px;
+        }
+        #browse .container .col 
+        {
+            font-size: 25px;
+        }
+        #browse .container .cols 
+        {
+            margin-right: 15%;
+            font-size: 25px;
+        }
+        #browse .container1 
+        {
+            width: 100%;
+        }
+        #browse .container form div 
+        {
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 15%;
+            padding: 1em 2em 1em 1em;
+            border-radius: 8px;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        #browse .container .prev img {
+            left: 25%;
+            top: 10px;
+            height: 350px;
+            width: fit-content;
+        }
+        .nav .navs ul li a {
+            font-size: 15px;
+        }
+        #browse .container form div label {
+            
+            font-size: 25px;
+        }
+        #browse .container form div input[type="submit"] {
+            font-size: 25px;
+        }
+        #browse .container1 img 
+        {
+            margin-left: 8%;
+            margin-top: 5%;
+            box-shadow: 4px 4px 10px rgb(0,0,0,.5);
+        }
+    }
+
+    /* responsive template 1024px only */
+    @media screen and (max-width: 1024px)
+    {
+        #navigation .navs ul li 
+        {
+            display: block;
+        }
+        #browse 
+        {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+        #browse .container 
+        {
+            width: 100%;
+            background: #f4f4f4;
+        }
+        #browse .container .one 
+        {
+            font-size: 15px;
+        }
+        #browse .container .col 
+        {
+            font-size: 15px;
+        }
+        #browse .container .cols 
+        {
+            margin-right: 25%;
+            font-size: 15px;
+        }
+        #browse .container1 
+        {
+            width: 100%;
+        }
+        #browse .container form div 
+        {
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 15%;
+            padding: 1em 2em 1em 1em;
+            border-radius: 8px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        #browse .container .prev img {
+            left: 25%;
+            top: 10px;
+            height: 350px;
+            width: fit-content;
+        }
+        .nav .navs ul li a {
+            font-size: 15px;
+        }
+        #browse .container form div label {
+            
+            font-size: 20px;
+        }
+        #browse .container form div input[type="submit"] {
+            font-size: 20px;
+        }
+        #browse .container1 img 
+        {
+            margin-left: 8%;
+            margin-top: 5%;
+            box-shadow: 4px 4px 10px rgb(0,0,0,.5);
+        }
+    }
+    /* responsive template 1024px only */
+    @media screen and (max-width: 900px)
+    {
+        #navigation .navs ul li 
+        {
+            display: none;
+        }
+        .nav .navs ul label
+        {
+            display: block;
+        }
+        .nav .navs ul label i
+        {   
+            position: relative;
+            top: -5%;
+            font-size: 35px;
+            /* border: 1px solid white; */
+            width: fit-content;
+            padding: 0.1em;
+        }
+        .nav .navs ul label i:hover
+        {
+            cursor: pointer;
+            transition: .2s linear;
+            background: #f4f4f4;
+            color:var(--nav1-color);
+            box-shadow:inset 3px 3px 6px rgba(0,0,0,0.5);
+            border-radius: 6px;
+
+        }
+        #menubar:checked ~ #navigation
+        {
+            display: none;
+        }
+        #menubar:checked ~ .mob_nav
+        {
+            background: var(--nav1-color);
+            display: block;
+            transition: all .5s linear;
+        }
+        #menubar:checked ~ .mob_nav .ico
+        {
+            animation: reveal 0.4s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs
+        {
+            animation: reveal 0.3s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs ul li
+        {
+            animation: reveals .7s linear;
+        }
+        @keyframes reveal {
+            from 
+            {
+                transform: translateY(-300px);
+            }
+            to
+            {
+                transform: translateY(0px);
+            }
+        }
+        #footers
+        {
+            height: fit-content;
+        }
+        #footers .container
+        {
+            flex-direction: column;
+        }
+        #footers .container .row2
+        {
+            position: relative;
+            width: 90%;
+        }
+        #footers .container .row1 
+        {
+            width: 80%;
+        }
+        #footers .container .row2 h2
+        {
+            position: relative;
+            background: var(--info);
+            text-align: center;
+        }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(20vh);
+            display: flex;
+        }
+        #footers .container .row2 ul li
+        {
+            position: relative;
+            top: 25%;
+            left:15%;
+        }
+    }
+        @keyframes reveals {
+            from 
+            {
+                transform: translateX(700px);
+            }
+            to
+            {
+                transform: translateX(0px);
+            }
+        }
+    /* responsive template 768px height 1024px */
+    @media screen and (max-width: 769px) and (min-height: 1023px)
+    {   
+        #menubar:checked ~ #navigation
+        {
+            display: none;
+        }
+        #menubar:checked ~ .mob_nav
+        {
+            background: var(--nav1-color);
+            display: block;
+            transition: all .5s linear;
+        }
+        #menubar:checked ~ .mob_nav .ico
+        {
+            animation: reveal 0.4s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs
+        {
+            animation: reveal 0.3s linear; 
+        }
+        #menubar:checked ~ .mob_nav .navs ul li
+        {
+            animation: reveals .7s linear;
+        }
+        @keyframes reveal {
+            from 
+            {
+                transform: translateY(-300px);
+            }
+            to
+            {
+                transform: translateY(0px);
+            }
+        }
+        @keyframes reveals {
+            from 
+            {
+                transform: translateX(700px);
+            }
+            to
+            {
+                transform: translateX(0px);
+            }
+        }
+        #footers
+        {
+            height: fit-content;
+        }
+        #footers .container
+        {
+            flex-direction: column;
+        }
+        #footers .container .row2
+        {
+            position: relative;
+            width: 90%;
+        }
+        #footers .container .row1 
+        {
+            width: 80%;
+        }
+        #footers .container .row2 h2
+        {
+            position: relative;
+            background: var(--info);
+            text-align: center;
+        }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(7vh);
+            display: flex;
+        }
+        #footers .container .row2 ul li
+        {
+            position: relative;
+            top: 25%;
+            left:15%;
+        }
+    }
+    /* responsive template 768px  */
+    @media screen and (max-width: 769px)
+    {
+        #browse .container .cols 
+        {
+            margin-right: 8%;
+        }
+        #browse .container .prev img 
+        {
+            left: 3%;
+        }
+        .gallery .card 
+        {
+            left: 15%;
+        }
+        #footers
+        {
+            height: fit-content;
+        }
+        #footers .container
+        {
+            flex-direction: column;
+        }
+        #footers .container .row2
+        {
+            position: relative;
+            width: 90%;
+        }
+        #footers .container .row1 
+        {
+            width: 80%;
+        }
+        #footers .container .row2 h2
+        {
+            position: relative;
+            background: var(--info);
+            text-align: center;
+        }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(20vh);
+            display: flex;
+        }
+        #footers .container .row2 ul li
+        {
+            position: relative;
+            top: 25%;
+            left:15%;
+        }
+    }
+    /* responsive rotate 414 */
+    @media screen and (max-width: 737px) and (min-height: 413px)
+    {
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(20vh);
+            display: flex;
+        }
+    }
+    /* responsive 540px and 720px */
+    @media screen and (max-width: 721px) and (min-height: 539px)
+    {
+        #browse .container form div label 
+        {
+            font-size: 15px;
+        }
+        #browse .container form div input[type="submit"] 
+        {
+            font-size: 15px;
+        }
+        .gallery .card 
+        {
+            left: 1%;
+        }
+        #footers .container .row2 ul 
+        {
+            height: fit-content;
+            flex-direction: column;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 30%;
+        }
+        #footers .container .row1 img 
+        {
+            width: 230px;
+            height: 100px;
+        }
+        #browse .container1 p 
+        {
+            font-size: 13px;
+        }
+    }
+    /* responsive 540px and 720px */
+    @media screen and (max-width: 634px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        .gallery .card 
+        {
+            left: 18%;
+        }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            height: calc(20vh);
+            display: flex;
+        }
+    }
+    /* responsive 540px and 720px */
+    @media screen and (max-width: 541px) and (min-height: 719px)
+    {
+        #browse .container .cols 
+        {
+            margin-right: 8%;
+        }
+        #browse .container .prev img 
+        {
+            left: 3%;
+        }
+        .gallery .card 
+        {
+            left: 15%;
+        }
+        #footers .container .row2 ul 
+        {
+            height: fit-content;
+            flex-direction: column;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 30%;
+        }
+        #footers .container .row1 img 
+        {
+            width: 199px;
+            height: 100px;
+        }
+    }
+    /* responsive 540px */
+    @media screen and (max-width: 540px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        .nav .ico img 
+        {
+            left: 0px;
+            width: 50%;
+        }
+        #browse .container .cols 
+        {
+            margin-right: 8%;
+        }
+        #browse .container .prev img 
+        {
+            left: 1%;
+            width: 100%;
+        }
+        #browse .container .prev 
+        {
+            width: 90%;
+            height: 400px;
+        }
+        .gallery .card 
+        {
+            left: 5%;
+        }
+        #footers .container .row2 ul 
+        {
+            height: fit-content;
+            flex-direction: column;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 30%;
+        }
+        #footers .container .row1 img 
+        {
+            width: 199px;
+            height: 100px;
+        }
+    }
+    /* responsive 540px and 720px */
+    @media screen and (max-width: 415px) and (min-height: 735px)
+    {
+        .nav .ico img 
+        {
+            left: 0px;
+            width:50%;
+        }
+        .nav .navs ul 
+        {
+            float: right;
+            right: 10px;
+        }
+        #browse .container .prev 
+        {
+            width: 95%;
+        }
+        #browse .container .prev img 
+        {
+            left: 0%;
+            width: 100%;
+        }
+        #browse .container1 .content 
+        {
+            left: 0%;
+            width: 100%;
+        }
+        #footers .container .row2 ul
+        {
+            position: relative;
+            background: var(--gray);
+            display: flex;
+        }
+    }
+    /* responsive 411px */
+    @media screen and (max-width: 412px) and (min-height: 730px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        .nav .ico img 
+        {
+            left: 0px;
+            width: 50%;
+        }
+        .nav .navs ul label i 
+        {
+            position: relative;
+            top: -5%;
+            font-size: 35px;
+            /* border: 1px solid white; */
+            width: fit-content;
+            padding: 0.1em;
+        }
+    }
+    @media screen and (max-width: 380px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        #browse .container .col 
+        {
+            margin-left: 10%;
+        }
+        #browse .container .cols 
+        {
+            font-size: 13px;
+        }
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+            font-size: 12px;
+        }
+        #footers .container .row1 img {
+            width: 159px;
+            height: 70px;
+        }
+    }
+
+    /* responsive 411px */
+    @media screen and (max-width: 376px) and (min-height: 811px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        #browse .container .col 
+        {
+            margin-left: 10%;
+        }
+        #browse .container .cols 
+        {
+            font-size: 13px;
+        }
+    }
+    @media screen and (max-width: 376px) and (min-height: 666px)
+    {
+        #browse .container1 p 
+        {
+            margin-left: 5%;
+            font-size: 12px;
+        }
+    }
+    
+    @media screen and (max-width: 361px) and (min-height: 639px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        #browse .container 
+        {
+            width: 100%;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 20%;
+        }
+    }
+
+    @media screen and (max-width: 350px)
+    {
+        .nav .navs ul 
+        {
+            right: 10px;
+        }
+        #browse .container 
+        {
+            width: 100%;
+        }
+        #browse .container .one {
+            font-size: 12px;
+        }
+        #browse .container .col {
+            font-size: 12px;
+        }
+        #browse .container .cols {
+            font-size: 11px;
+        }
+        #footers .container .row1 p {
+            font-size: 15px;
+        }
+        #footers .container .row2 ul li 
+        {
+            left: 20%;
+        }
+    }
+    @media screen and (max-width: 320px)
+    {
+        .gallery .card 
+        {
+            left: 1%;
+            width: 90%;
+        }
+        .gallery .card img 
+        {
+            width: 100%;
+            height: 280px;
+        }
+    }
+       </style>
 <head>
-	<title>
-		How to Integrate Webcam using
-		JavaScript on HTML5 ?
-	</title>
-	<link href=
-"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-			rel="stylesheet">
-
-	<script src=
-"http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
-	type="text/javascript">
-
-	</script>
-
-	<script src=
-"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
-	</script>
+    <title>Capture picture from your webcam</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
 </head>
-
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="card">
-					<h5 class="card-header h5 text-center">
-						HTML 5 & JS live Cam
-					</h5>
-					<div class="card-body">
-						<div class="booth">
-							<video id="video" width="100%"
-								height="100%" autoplay>
-							</video>
-						</div>
-
-						<div class="text-right">
-							<a href="#!" class="btn btn-danger"
-								onClick="stop()">
-								Stop Cam
-							</a>
-							<a href="#!" class="btn btn-success"
-								onClick="start()">
-								Start Cam
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script>
-		var stop = function () {
-			var stream = video.srcObject;
-			var tracks = stream.getTracks();
-			for (var i = 0; i < tracks.length; i++) {
-				var track = tracks[i];
-				track.stop();
-			}
-			video.srcObject = null;
-		}
-		var start = function () {
-			var video = document.getElementById('video'),
-				vendorUrl = window.URL || window.webkitURL;
-			if (navigator.mediaDevices.getUserMedia) {
-				navigator.mediaDevices.getUserMedia({ video: true })
-					.then(function (stream) {
-						video.srcObject = stream;
-					}).catch(function (error) {
-						console.log("Something went wrong!");
-					});
-			}
-		}
-		$(function () {
-			start();
-		});
-	</script>
+    {% if pop == 1 %}
+    <script>
+        alert("your image doesnot have face");
+    </script>
+    {% endif %}
+    <input type="checkbox" id="menubar">
+    <div class="nav" id="navigation">
+        <div class="ico">
+            <img src="/static/img/w2sicon.png" alt="">
+        </div>
+        <div class="navs" id="na">
+            <ul>
+                <li><a class="links" href="">Home</a></li>
+                <li><a class="links" href="/#about">About</a></li>
+                <li><a class="links" href="/#product">Products</a></li>
+                <li><a class="links active" href="#">Image</a></li>
+                <li><a class="links" href="/webcam">Webcam</a></li>
+                <label for="menubar"><i class="las la-bars"></i></label>
+            </ul>
+        </div>
+    </div>
+	<h2 class="head">Our Happy Detect AI</h2>
+    <section id= "browse"> 
+        <div class="container">
+            <br>
+            <p class="one">How happy <span></span></p>
+            <br>
+            <p class="col">Visualize everyones happiness by our AI</p>
+            <br>
+            <p class="cols">Upload Photos & check everyone happiness Level</p>
+            <br>
+            <div class="prev">
+                <div id="camera" style="height:auto;width:auto; text-align:left;"></div>
+            </div>
+            <br>
+			<p id="snapShot"></p>
+            <form action="" method="post">
+				{% csrf_token %}
+				<p id="c" name="">
+					<!-- <input type="text" name="" id="" value=""> -->
+				</p>
+				<input type="submit">
+			</form>
+            <input type="button" value="Take a Snap" id="btPic" onclick="takeSnapShot()" />  
+        </div>
+        <div class="container1">
+            
+            <div  class="fun">
+                <button onclick="funcontent()">Fun Comment</button>
+                <p id="funed"style="display: none;">{{funny}}</p>
+            </div>
+            <div class="content">
+                <p class="con">{{content}}</p>
+            </div>
+            <br>
+            <img src="/static/detectimg/{{detect_img}}" style="width: 80%;">
+            <br>
+            <p>In Your Picture these are the smile level <span>{{smile_percent}}</span></p>
+        </div>
+        
+    </section>
 </body>
 
+<script>
+    // CAMERA SETTINGS.
+    Webcam.set({
+        width: 700,
+        height: 700,
+        image_format: 'jpeg',
+        jpeg_quality: 100
+    });
+    Webcam.attach('#camera');
+
+    // SHOW THE SNAPSHOT.
+    takeSnapShot = function () {
+        Webcam.snap(function (data_uri) {
+            console.log("check",data_uri);
+            document.getElementById('snapShot').innerHTML = '<img src="' + data_uri + '" width="70px" height="50px" />';
+                document.getElementById('c').innerHTML= '<input type = "text " name="test" value="'+data_uri+'" style="display:none;">';    
+        });
+        
+    }
+</script>
 </html>
+
+
+    <!--FOR THE SNAPSHOT-->
+    
+    
+    
