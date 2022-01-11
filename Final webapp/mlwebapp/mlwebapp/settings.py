@@ -83,7 +83,6 @@ DATABASES = {
         'PASSWORD':'Way2smile@ml'
         }
 }
-
 # DATABSE_URI='mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(user='root', password='', server='localhost', database='mlapps')
 
 # Password validation

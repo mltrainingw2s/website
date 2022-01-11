@@ -46,7 +46,7 @@ def imgdetect(request):
         print("sdfsfsfsd")
         input_image = cv2.imread('/home/ubuntu/img/'+str(imgs))
         print("aaaaa",input_image)
-        frame_flip = cv2.flip(input_image, 1)
+        frame_flip = input_image
         # print(input_image,"input image")
         emotion_detector = FER(mtcnn=True)
         result = emotion_detector.detect_emotions(frame_flip)
@@ -181,7 +181,7 @@ class snaps():
             import base64
             with open("/home/ubuntu/img/"+firstimg+".jpg", "wb") as fh:
                 fh.write(base64.b64decode(s[1]))
-            input_image = cv2.imread("/home/ubuntu/img/"+firstimg+".jpg")
+            input_image1 = cv2.imread("/home/ubuntu/img/"+firstimg+".jpg")
             picture = Image.open('/home/ubuntu/img/'+firstimg+'.jpg').convert('L')
             print("pcc",picture)
             picture = picture.save("/home/ubuntu/img/"+saveimgs+".jpg")
@@ -200,7 +200,7 @@ class snaps():
                 for i in result:
                     bounding_box = i["box"]
                     emotions = i["emotions"]
-                    cv2.rectangle(input_image,(
+                    cv2.rectangle(input_image1,(
                     bounding_box[0], bounding_box[1]),(
                     bounding_box[0] + bounding_box[2], bounding_box[1] + bounding_box[3]),
                                 (0, 155, 255), 2,)
@@ -209,7 +209,7 @@ class snaps():
                     max_value = max(all_values)
                     # print(max_emotions)
                     # print(max_value)
-                    emotion_name, score = emotion_detector.top_emotion(input_image)
+                    emotion_name, score = emotion_detector.top_emotion(input_image1)
                     a=list(emotions.items())
                     emotion_name=a[3][0]
                     # print(emotion_name)
@@ -239,11 +239,11 @@ class snaps():
                     list_smile.append(smile_percent)
                     print("smile",smile_percent)
                     # print(smile_percent,"this is the smile percentage")
-                    cv2.putText(input_image,emotion_score,
+                    cv2.putText(input_image1,emotion_score,
                             (bounding_box[0], bounding_box[1] + bounding_box[3] + 30 + 3 * 0),
                             cv2.FONT_HERSHEY_SIMPLEX,0.75,color,2,cv2.LINE_AA,)
                     #Save the result in new image file
-                    cv2.imwrite(str(BASE_DIR)+"/static/detectimg/"+saveimgs+'.jpg',input_image)
+                    cv2.imwrite(str(BASE_DIR)+"/static/detectimg/"+saveimgs+'.jpg',input_image1)
                 print(list_smile,"smile percentaages ")
                 strings=" "
                 commas=","
@@ -252,16 +252,16 @@ class snaps():
                     strings += str(i)
                     strings += commas
                 print(strings)
-                save_test = Ml_Image.objects.create(image_upload = str('test.jpg'),smile_percentage = content,image_type = 1)
+                save_test = Ml_Image.objects.create(image_upload = str(saveimgs+'.jpg'),smile_percentage = content,image_type = 1)
                 get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
                 print("get",get_image)
-                return render(request,"snapcam.html",{'detect_img':str('test.jpg'),"smile_percent":strings,"content":data,"gallery":get_image,"funny":funny,"pop":pop,"buttons":"block"})
+                return render(request,"snapcam.html",{'detect_img':str(saveimgs+'.jpg'),"smile_percent":strings,"content":data,"gallery":get_image,"funny":funny,"pop":pop,"buttons":"block"})
             else:
                 pop = 1
                 get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
                 return render(request,"snapcam.html",{'detect_img':"5.png","smile_percent":"80%","gallery":get_image,"pop":pop,"buttons":"none"})
         else:
-            return render(request,"snapcam.html")
+            return render(request,"snapcam.html",{'detect_img':"5.png","smile_percent":"80%","buttons":"none"})
 
 #Method for phone camera
 # def webcam_feed(request):

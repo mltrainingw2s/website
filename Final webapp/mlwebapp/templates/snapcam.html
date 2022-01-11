@@ -1,5 +1,9 @@
 <!doctype html>
 <html>
+	<head>
+		<title>Capture picture from your webcam</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
+	</head>
     <style>
         #camera{
             margin-left: 10px;
@@ -1412,10 +1416,7 @@
         }
     }
        </style>
-<head>
-    <title>Capture picture from your webcam</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
-</head>
+
 <body>
     {% if pop == 1 %}
     <script>
@@ -1449,7 +1450,8 @@
             <p class="cols">Upload Photos & check everyone happiness Level</p>
             <br>
             <div class="prev">
-                <div id="camera" style="height:auto;width:auto; text-align:left;"></div>
+				<!-- <iframe id="camera" allow="camera; microphone; fullscreen; display-capture; autoplay"></iframe> -->
+                <div id="camera" style="height:500px;width:500px; text-align:left;"></div>
             </div>
             <br>
 			<p id="snapShot"></p>
@@ -1483,10 +1485,11 @@
 <script>
     // CAMERA SETTINGS.
     Webcam.set({
-        width: 700,
-        height: 700,
+        width: 400,
+        height: 300,
         image_format: 'jpeg',
-        jpeg_quality: 100
+        jpeg_quality: 100,
+        flip_horiz: true
     });
     Webcam.attach('#camera');
 
@@ -1494,7 +1497,7 @@
     takeSnapShot = function () {
         Webcam.snap(function (data_uri) {
             console.log("check",data_uri);
-            document.getElementById('snapShot').innerHTML = '<img src="' + data_uri + '" width="70px" height="50px" />';
+            document.getElementById('snapShot').innerHTML = '<img src="' + data_uri + '" width="200px" height="150px" />';
                 document.getElementById('c').innerHTML= '<input type = "text " name="test" value="'+data_uri+'" style="display:none;">';    
         });
         
