@@ -28,12 +28,14 @@ import random
 # Create your views here.
 def index(request):
     ip = get_client_ip(request)
-    print("this is ip: ",ip)
+    print("index: ",ip)
     return render(request,"index.html")
 
 def imgdetect(request):
     if request.method == "POST" and 'image' in request.FILES:
-        print("enter-------------")
+        # print("enter-------------")
+        ip = get_client_ip(request)
+        print("images: ",ip)
         imgs = request.FILES['image']
         # fss = FileSystemStorage()
         # fie = fss.save(imgs.name, imgs)
@@ -42,15 +44,15 @@ def imgdetect(request):
         im =Image.open(imgs)
         im.save('/home/ubuntu/img/'+str(imgs))
         # im.show()
-        print(str(BASE_DIR)) 
-        print("sdfsfsfsd")
+        # print(str(BASE_DIR)) 
+        # print("sdfsfsfsd")
         input_image = cv2.imread('/home/ubuntu/img/'+str(imgs))
-        print("aaaaa",input_image)
+        # print("aaaaa",input_image)
         frame_flip = input_image
         # print(input_image,"input image")
         emotion_detector = FER(mtcnn=True)
         result = emotion_detector.detect_emotions(frame_flip)
-        print(result,"result")
+        # print(result,"result")
         pop = 0
         if result != []:
             list_smile = []
@@ -71,7 +73,7 @@ def imgdetect(request):
                 emotion_name=a[3][0]
                 # print(emotion_name)
                 score=a[3][1]
-                print("score",score)
+                # print("score",score)
                 emotion_name="Smile"
                 color = (255,50,50)
                 content = score *100
@@ -93,24 +95,24 @@ def imgdetect(request):
                 emotion_score = "{}: {}".format(emotion_name, "{:.0%}".format(score))
                 smile_percent ="{:.0%}".format(score)
                 list_smile.append(smile_percent)
-                print("smile",smile_percent)
+                # print("smile",smile_percent)
                 # print(smile_percent,"this is the smile percentage")
                 cv2.putText(frame_flip,emotion_score,
                         (bounding_box[0], bounding_box[1] + bounding_box[3] + 30 + 3 * 0),
                         cv2.FONT_HERSHEY_SIMPLEX,0.75,color,2,cv2.LINE_AA,)
                 #Save the result in new image file
                 cv2.imwrite(str(BASE_DIR)+"/static/detectimg/"+str(imgs),frame_flip)
-            print(list_smile,"smile percentaages ")
+            # print(list_smile,"smile percentaages ")
             strings=" "
             commas=","
             for i in list_smile:
-                print(i)
+                # print(i)
                 strings += str(i)
                 strings += commas
-            print(strings)
+            # print(strings)
             save_test = Ml_Image.objects.create(image_upload = str(imgs),smile_percentage = content,image_type = 1)
             get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
-            print("get",get_image)
+            # print("get",get_image)
             return render(request,"imagedetect.html",{'detect_img':imgs,"smile_percent":strings,"content":data,"gallery":get_image,"funny":funny,"pop":pop,"buttons":"block"})
         else:
             pop = 1
@@ -144,7 +146,7 @@ class snaps():
         # print("cames")
         # print("This is the self b",self.b)
         while True:
-            print("This is the self b",b)
+            # print("This is the self b",b)
             frame = camera.get_frame(b)
             yield (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
@@ -153,7 +155,7 @@ class snaps():
     #Method for laptop camera
     def snap_feed(self,request):
         b=self.a
-        print(self.a,"sdafsdfasd")
+        # print(self.a,"sdafsdfasd")
         return StreamingHttpResponse(self.gen_image(SnapCamera()),
                         #video type
                         content_type='multipart/x-mixed-replace; boundary=frame')
@@ -165,6 +167,8 @@ class snaps():
         # if self.d=="q":
         #     print("came here")
         #     self.a = self.d
+        ip = get_client_ip(request)
+        print("snaaps: ",ip)
         if request.method == "POST":
             names=request.POST.get("test")
             s = names.split(',')
@@ -183,17 +187,17 @@ class snaps():
                 fh.write(base64.b64decode(s[1]))
             input_image1 = cv2.imread("/home/ubuntu/img/"+firstimg+".jpg")
             picture = Image.open('/home/ubuntu/img/'+firstimg+'.jpg').convert('L')
-            print("pcc",picture)
+            # print("pcc",picture)
             picture = picture.save("/home/ubuntu/img/"+saveimgs+".jpg")
             # im.save('C:/Users/VC/Downloads/'+str(imgs))
             input_image = cv2.imread('/home/ubuntu/img/'+saveimgs+'.jpg')
-            print("test",input_image.shape)
-            print("aaaaa",input_image.shape)
+            # print("test",input_image.shape)
+            # print("aaaaa",input_image.shape)
             # print(input_image,"input image")
             emotion_detector = FER(mtcnn=True)
-            print("emo",emotion_detector)
+            # print("emo",emotion_detector)
             result = emotion_detector.detect_emotions(input_image)
-            print(result,"result")
+            # print(result,"result")
             pop = 0
             if result != []:
                 list_smile = []
@@ -214,11 +218,11 @@ class snaps():
                     emotion_name=a[3][0]
                     # print(emotion_name)
                     score=a[3][1]
-                    print("score",score)
+                    # print("score",score)
                     emotion_name="Smile"
                     color = (255,50,50)
                     content = score *100
-                    print("conte",content)
+                    # print("conte",content)
                     if content >= 0  and content <= 20:
                         data = "Smile please,...Smile while you stil have teeth!."
                         funny = "Konjam siringa boss,"
@@ -237,24 +241,24 @@ class snaps():
                     emotion_score = "{}: {}".format(emotion_name, "{:.0%}".format(score))
                     smile_percent ="{:.0%}".format(score)
                     list_smile.append(smile_percent)
-                    print("smile",smile_percent)
+                    # print("smile",smile_percent)
                     # print(smile_percent,"this is the smile percentage")
                     cv2.putText(input_image1,emotion_score,
                             (bounding_box[0], bounding_box[1] + bounding_box[3] + 30 + 3 * 0),
                             cv2.FONT_HERSHEY_SIMPLEX,0.75,color,2,cv2.LINE_AA,)
                     #Save the result in new image file
                     cv2.imwrite(str(BASE_DIR)+"/static/detectimg/"+saveimgs+'.jpg',input_image1)
-                print(list_smile,"smile percentaages ")
+                # print(list_smile,"smile percentaages ")
                 strings=" "
                 commas=","
                 for i in list_smile:
                     print(i)
                     strings += str(i)
                     strings += commas
-                print(strings)
+                # print(strings)
                 save_test = Ml_Image.objects.create(image_upload = str(saveimgs+'.jpg'),smile_percentage = content,image_type = 1)
                 get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
-                print("get",get_image)
+                # print("get",get_image)
                 return render(request,"snapcam.html",{'detect_img':str(saveimgs+'.jpg'),"smile_percent":strings,"content":data,"gallery":get_image,"funny":funny,"pop":pop,"buttons":"block"})
             else:
                 pop = 1
