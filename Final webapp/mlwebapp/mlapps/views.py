@@ -32,6 +32,8 @@ def index(request):
     return render(request,"index.html")
 
 def imgdetect(request):
+    ip = get_client_ip(request)
+    print("imagesout: ",ip)
     if request.method == "POST" and 'image' in request.FILES:
         # print("enter-------------")
         ip = get_client_ip(request)
