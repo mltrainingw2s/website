@@ -26,8 +26,6 @@ from ipware import get_client_ip
 import random
 import datetime
 
-nowtime = datetime.datetime.now()
-
 # Create your views here.
 def index(request):
     ip = get_client_ip(request)
@@ -46,7 +44,7 @@ def imgdetect(request):
     # data1 = json.loads(response.read())
     # longitude=data1["longitude"]
     # latitude=data1["latitude"]
-    print("imagesout: ",ip,nowtime)
+    print("imagesout: ",ip,datetime.datetime.now())
     if request.method == "POST" and 'image' in request.FILES:
         # print("enter-------------")
         ip = get_client_ip(request)
@@ -188,7 +186,7 @@ class snaps():
         # data1 = json.loads(response.read())
         # longitude=data1["longitude"]
         # latitude=data1["latitude"]
-        print("snaaps: ",ip,nowtime)
+        print("snaaps: ",ip,datetime.datetime.now())
         if request.method == "POST":
             names=request.POST.get("test")
             s = names.split(',')
