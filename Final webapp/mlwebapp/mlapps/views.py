@@ -31,22 +31,22 @@ nowtime = datetime.datetime.now()
 # Create your views here.
 def index(request):
     ip = get_client_ip(request)
-    url = 'https://api.ipfind.com/?ip=' + ip
-    response = urllib.request.urlopen(url)
-    data1 = json.loads(response.read())
-    longitude=data1["longitude"]
-    latitude=data1["latitude"]
-    print("index: ",ip,longitude,latitude,nowtime)
+    # url = 'https://api.ipfind.com/?ip=' + ip
+    # response = urllib.request.urlopen(url)
+    # data1 = json.loads(response.read())
+    # longitude=data1["longitude"]
+    # latitude=data1["latitude"]
+    print("index: ",ip,nowtime)
     return render(request,"index.html")
 
 def imgdetect(request):
     ip = get_client_ip(request)
-    url = 'https://api.ipfind.com/?ip=' + ip
-    response = urllib.request.urlopen(url)
-    data1 = json.loads(response.read())
-    longitude=data1["longitude"]
-    latitude=data1["latitude"]
-    print("imagesout: ",ip,longitude,latitude,nowtime)
+    # url = 'https://api.ipfind.com/?ip=' + ip
+    # response = urllib.request.urlopen(url)
+    # data1 = json.loads(response.read())
+    # longitude=data1["longitude"]
+    # latitude=data1["latitude"]
+    print("imagesout: ",ip,nowtime)
     if request.method == "POST" and 'image' in request.FILES:
         # print("enter-------------")
         ip = get_client_ip(request)
@@ -183,12 +183,12 @@ class snaps():
         #     print("came here")
         #     self.a = self.d
         ip = get_client_ip(request)
-        url = 'https://api.ipfind.com/?ip=' + ip
-        response = urllib.request.urlopen(url)
-        data1 = json.loads(response.read())
-        longitude=data1["longitude"]
-        latitude=data1["latitude"]
-        print("snaaps: ",ip,longitude,latitude,nowtime)
+        # url = 'https://api.ipfind.com/?ip=' + ip
+        # response = urllib.request.urlopen(url)
+        # data1 = json.loads(response.read())
+        # longitude=data1["longitude"]
+        # latitude=data1["latitude"]
+        print("snaaps: ",ip,nowtime)
         if request.method == "POST":
             names=request.POST.get("test")
             s = names.split(',')
