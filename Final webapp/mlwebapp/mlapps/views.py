@@ -36,7 +36,7 @@ def index(request):
     # data1 = json.loads(response.read())
     # longitude=data1["longitude"]
     # latitude=data1["latitude"]
-    print("index: ",ip,nowtime)
+    print("index: ",ip,datetime.datetime.now())
     return render(request,"index.html")
 
 def imgdetect(request):
