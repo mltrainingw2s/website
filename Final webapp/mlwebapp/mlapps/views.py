@@ -31,7 +31,7 @@ nowtime = datetime.datetime.now()
 # Create your views here.
 def index(request):
     ip = get_client_ip(request)
-    url = 'https://api.ipfind.com/?ip=' + client_ip
+    url = 'https://api.ipfind.com/?ip=' + ip
     response = urllib.request.urlopen(url)
     data1 = json.loads(response.read())
     longitude=data1["longitude"]
@@ -41,7 +41,7 @@ def index(request):
 
 def imgdetect(request):
     ip = get_client_ip(request)
-    url = 'https://api.ipfind.com/?ip=' + client_ip
+    url = 'https://api.ipfind.com/?ip=' + ip
     response = urllib.request.urlopen(url)
     data1 = json.loads(response.read())
     longitude=data1["longitude"]
@@ -183,7 +183,7 @@ class snaps():
         #     print("came here")
         #     self.a = self.d
         ip = get_client_ip(request)
-        url = 'https://api.ipfind.com/?ip=' + client_ip
+        url = 'https://api.ipfind.com/?ip=' + ip
         response = urllib.request.urlopen(url)
         data1 = json.loads(response.read())
         longitude=data1["longitude"]
