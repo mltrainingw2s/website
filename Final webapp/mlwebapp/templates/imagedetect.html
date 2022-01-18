@@ -299,12 +299,14 @@
         cursor: pointer;
         border:none;
     }
-    #browse .container span
+    #browse .container .camera
     {
         position: relative;
         float: left;
-        background: var(--nav1-color);
-        color: white;
+        width: fit-content;
+        height: fit-content;
+        background: transparent;
+        color: var(--footer-color);
         border-radius: 5px;
         padding: 0.5em .5em .5em .5em;
         font-family: 'Poppins',sans-serif;
@@ -1488,7 +1490,7 @@
                 </div>
                 <br>
             </form>
-            <span><i class="las la-camera" onclick="snap()"></i></span>
+            <span class="camera"><i class="las la-camera" onclick="snap()"></i></span>
             <div id="snap" style="display: none;"> 
                 <!-- <img src="{% url 'video_feed' %}"> -->
             </div>
