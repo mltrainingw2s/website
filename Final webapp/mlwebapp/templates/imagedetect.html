@@ -299,6 +299,19 @@
         cursor: pointer;
         border:none;
     }
+    #browse .container button
+    {
+        position: relative;
+        float: right;
+        background: var(--nav1-color);
+        color: white;
+        border-radius: 5px;
+        padding: 0.5em 1em .5em 1em;
+        font-family: 'Poppins',sans-serif;
+        font-size: 19px;
+        cursor: pointer;
+        border:none;
+    }
     #browse .container .prev
     {
         width: 100%;
@@ -1466,17 +1479,6 @@
     <h2 class="head">Our Happy Detect AI</h2>
     <section id= "browse"> 
         <div class="container">
-            <br>
-            <p class="one">How happy <span></span></p>
-            <br>
-            <p class="col">Visualize everyones happiness by our AI</p>
-            <br>
-            <p class="cols">Upload Photos & check everyone happiness Level</p>
-            <br>
-            <div class="prev">
-                <img class="output" id="output"  src="/static/img/7.png"/>
-            </div>
-            <br>
             <form action="{% url 'image'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div>
@@ -1490,6 +1492,19 @@
             <div id="snap" style="display: none;"> 
                 <!-- <img src="{% url 'video_feed' %}"> -->
             </div>
+            <br>
+            <p class="one">How happy <span></span></p>
+            <br>
+            <p class="col">Visualize everyones happiness by our AI</p>
+            <br>
+            <p class="cols">Upload Photos & check everyone happiness Level</p>
+            <br>
+            <div class="prev">
+                <img class="output" id="output"  src="/static/img/7.png"/>
+            </div>
+            <br>
+            
+            
         </div>
         <div class="container1">
             
