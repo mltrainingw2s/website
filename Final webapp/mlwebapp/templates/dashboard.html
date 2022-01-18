@@ -47,6 +47,29 @@
             width: 15%;
             height: 100%;
         }
+        header .nav ul label
+        {
+            background: white;
+            margin-top: 20px;
+        }
+        header .nav ul li  
+        {
+            text-decoration: none;
+            width: 80%;
+            margin-top: 10px;
+            text-align: center;
+        }
+        header .nav ul li a 
+        {
+            text-decoration: none;
+            color: white;
+        }
+        header .nav ul li a:hover 
+        {
+            background: white;
+            color: black;
+            padding: .5em .7em;
+        }
         header .main
         {
             background: transparent;
@@ -98,46 +121,57 @@
             border-radius: 5px;
             box-shadow: 3px 3px 6px rgba(0,0,0,0.1); 
         }
-        header .main .maincard .card h2
+        header .main h3
         {
-            
+            background: black;
+            color: white;
+            width: fit-content;
+            height: fit-content;
+            padding: .3em;
+            border-radius: 2px;
+            box-shadow: 5px 5px 6px rgba(0,0,0,0.3);
         }
+        
     </style>
     <body>
         <header>
             <div class="nav">
                 <ul>
+                    <label for="menubar"><i class="las la-bars"></i></label>
                     <li><a class="links" href="/">Home</a></li>
-                    <li><a class="links" href="#about">About</a></li>
-                    <li><a class="links" href="#product">Products</a></li>
+                    <li><a class="links" href="/#about">About</a></li>
+                    <li><a class="links" href="/#product">Products</a></li>
                     <li><a class="links active" href="mlmodel">Dashboard</a></li>
                     <li><a class="links" href="image">Image</a></li>
                     <li><a class="links" href="webcam">Webcam</a></li>
-                    <label for="menubar"><i class="las la-bars"></i></label>
                 </ul>
             </div>
             <div class="main">
                 <div class="heads">
-                    <h2>Dashboard</h2>
+                    <h2>ML Dashboard</h2>
                 </div>
+                <h3>Models used</h3>
                 <div class="maincard">
                     <div class="card">
                         <h2>Image classifications</h2>
-
-                        <a href="/">Know More</a>
+                        <p>Keras Models</p>
+                        <p>Own models customizied</p>
+                        <img src="/static/img/dec.png" width="50px" height="50px"alt="">
                     </div>
                     <div class="card">
                         <h2>Object Detection</h2>
+                        <p>COCO Custom models</p>
                         <img src="/static/img/dec.png" width="50px" height="50px"alt="">
-                        <a href="/">Know More</a>
                     </div>
                     <div class="card">
                         <h2>Smile Detection</h2>
-                        <a href="/">Know More</a>
+                        <p>FER(Face Emotion recognition) models</p>
+                        <img src="/static/img/dec.png" width="50px" height="50px"alt="">
                     </div>
                     <div class="card">
-                        <h2>Live Detection</h2>
-                        <a href="/">Know More</a>
+                        <h2>Live Smile Detection</h2>
+                        <p>TFlite FER(Face Emotion recognition) models</p>
+                        <img src="/static/img/dec.png" width="50px" height="50px"alt="">
                     </div>
                 </div>
             </div>
