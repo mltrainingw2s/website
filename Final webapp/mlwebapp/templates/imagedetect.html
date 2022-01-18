@@ -220,7 +220,7 @@
     {
         0%
         {
-            content: ' you ';
+            content: ' you & your cousins';
             background: var(--info);
             color: white;
             padding: 0.3em .6em .3em .6em;
@@ -302,7 +302,7 @@
     #browse .container button
     {
         position: relative;
-        float: right;
+        float: left;
         background: var(--nav1-color);
         color: white;
         border-radius: 5px;
@@ -1483,7 +1483,7 @@
                 {% csrf_token %}
                 <div>
                     <input type="file" accept="image/*" name="image" id="imgs" onchange="loadfile(event)" style="display: none;"/>
-                    <label for="imgs">Click Me</label>
+                    <label for="imgs">Upload Image</label>
                     <input type="submit" name="submit"/>
                 </div>
                 <br>
