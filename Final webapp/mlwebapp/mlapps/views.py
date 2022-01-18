@@ -36,7 +36,10 @@ def index(request):
     # latitude=data1["latitude"]
     print("index: ",ip,datetime.datetime.now())
     return render(request,"index.html")
-
+def dash(request):
+    ip = get_client_ip(request)
+    print("dash: ",ip,datetime.datetime.now())
+    return render(request,"dashboard.html")
 def imgdetect(request):
     ip = get_client_ip(request)
     # url = 'https://api.ipfind.com/?ip=' + ip
