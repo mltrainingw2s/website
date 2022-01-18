@@ -133,7 +133,7 @@ def imgdetect(request):
             return render(request,"imagedetect.html",{'detect_img':"5.png","smile_percent":"80%","gallery":get_image,"pop":pop,"buttons":"none"})
     else:
         get_image = Ml_Image.objects.values('image_upload','image_type','smile_percentage').order_by('-created_at')
-        return render(request,"imagedetect.html",{'detect_img':"5.png","smile_percent":"80%","gallery":get_image,"buttons":"none"})
+        return render(request,"imagedetect.html",{'detect_img':"6.png","smile_percent":"80%","gallery":get_image,"buttons":"none"})
 
 def videodetect(request):
     return render(request,"webcamdetect.html")
