@@ -18,4 +18,6 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('mlapps.urls')),
+    path('mlrest/',include('restapi.urls')),
+
 ]
