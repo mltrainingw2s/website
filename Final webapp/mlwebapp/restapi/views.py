@@ -36,7 +36,7 @@ class Image_detect(APIView):
         m = Restmlimage.objects.values('id','image_upload','smile_percentage').order_by('-created_at')
         serializer = mlimageserializer(m,many=True)
         print("enters-----",m)
-        return Response(serializer.data)
+        return Response({'gallery':serializer.data})
 
     def post(self,request):
         if 'image' in request.FILES:
