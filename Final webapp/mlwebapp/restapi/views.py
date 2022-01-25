@@ -39,8 +39,8 @@ class Image_detect(APIView):
         return Response({'gallery':serializer.data})
 
     def post(self,request):
-        if 'image' in request.FILES:
-            imgs = request.FILES['image']
+        if 'myfile' in request.FILES:
+            imgs = request.FILES['myfile']
             a=str(imgs).split('.')
             imext = ['jpg','jpeg','png','JPEG','JPG','PNG','JFIF','jfif']
             if str(a[1]) in imext:
