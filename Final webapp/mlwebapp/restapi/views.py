@@ -39,8 +39,9 @@ class Image_detect(APIView):
         return Response({'gallery':serializer.data})
 
     def post(self,request):
-        print("------------------",request.body.decode,"----------------")
+        print("------------------",json.loads(request.body.decode('utf-8')),"----------------")
         if 'data' in request.FILES:
+            print("data---------------",request.FILES['data'])
             imgs = request.FILES['data']
             a=str(imgs).split('.')
             imext = ['jpg','jpeg','png','JPEG','JPG','PNG','JFIF','jfif']
@@ -73,7 +74,7 @@ class Image_detect(APIView):
                         # print("score",score)
                         emotion_name = "Smile"
                         color = (255, 50, 50)
-                        content = score * 100
+                        content = score * 10 0
                         if content >= 0 and content <= 20:
                             data = "Smile please,...Smile while you stil have teeth!."
                         elif content >= 21 and content <= 40:
