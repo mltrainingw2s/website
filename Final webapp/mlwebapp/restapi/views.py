@@ -74,7 +74,7 @@ class Image_detect(APIView):
                         # print("score",score)
                         emotion_name = "Smile"
                         color = (255, 50, 50)
-                        content = score * 10 0
+                        content = score * 100
                         if content >= 0 and content <= 20:
                             data = "Smile please,...Smile while you stil have teeth!."
                         elif content >= 21 and content <= 40:
