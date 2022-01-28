@@ -29,6 +29,14 @@ import datetime
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import mlimageserializer
+
+import spacy
+from spacy.lang.en.stop_words import STOP_WORDS
+from string import punctuation
+from heapq import nlargest
+from pdf2docx import Converter
+from docx import Document
+
 # Create your views here.
 class Image_detect(APIView):
 
@@ -120,5 +128,134 @@ class Image_detect(APIView):
             return Response({'msg':'please upload image for smile detections'},status=status.HTTP_400_BAD_REQUEST)
 
 
+class Text_file(APIView):
+    def get(self,request):
+        return Response({'msg':'Files are not saved, you can only upload and view the Abstract of your pdf. Once you upload other file or once you leave the abstract wont be saved'},status=status.HTTP_204_NO_CONTENT)
 
+    def process(self,text):
+        stopwords = list(STOP_WORDS)
+        print("length---", len(stopwords))
+        print("words in stopwords-----", stopwords)
 
+        nlp = spacy.load('en_core_web_sm')
+        doc = nlp(text)
+        print("document-----", doc)
+
+        tokens = [token.text for token in doc]
+        print("splitted----", tokens)
+
+        punctution = punctuation + '/n'
+        print("punctuations--------", punctution)
+
+        word_frequencies = {}
+        for word in doc:
+            print("words----", word)
+            if word.text.lower() not in stopwords:
+                if word.text.lower() not in punctution:
+                    if word.text not in word_frequencies.keys():
+                        word_frequencies[word.text] = 1
+                        print("vivi--vivi ", word_frequencies[word.text])
+                    else:
+                        word_frequencies[word.text] += 1
+                        print("v--v ", word_frequencies[word.text])
+        print("wordfrequencies----", word_frequencies)
+
+        max_frequency = max(word_frequencies.values())
+        print("max-freq-----", max_frequency)
+
+        for word in word_frequencies.keys():
+            print("words---i--", word)
+            print("wordfreq----", word_frequencies[word])
+            word_frequencies[word] = word_frequencies[word] / max_frequency
+
+        print("final wordfreq---", word_frequencies)
+
+        sentence_tokens = [sent for sent in doc.sents]
+        print("sentence ------", sentence_tokens)
+
+        sentence_scores = {}
+        for sent in sentence_tokens:
+            print("sent---", sent)
+            for word in sent:
+                print("wordsinsent---", word)
+                if word.text.lower() in word_frequencies.keys():
+                    print("it is in wordfreq")
+                    if sent not in sentence_scores.keys():
+                        sentence_scores[sent] = word_frequencies[word.text.lower()]
+                        print("sent notin sentencedict-----", sentence_scores[sent])
+                    else:
+                        sentence_scores[sent] += word_frequencies[word.text.lower()]
+                        print("sent is pres %%!in sentencedict-----", sentence_scores[sent])
+        print("final sentence score------ ", sentence_scores)
+
+        select_length = int(len(sentence_tokens) * 0.1)
+        print("lenghtselect-----", select_length)
+
+        summary = nlargest(select_length, sentence_scores, key=sentence_scores.get)
+
+        print("split summary ------------- ", summary)
+
+        final_summary = [word.text for word in summary]
+
+        summary = ' '.join(final_summary)
+        return summary
+
+    def post(self,request):
+        if 'data' in request.FILES:
+            from django.core.files.storage import default_storage
+            from django.core.files.base import ContentFile
+            files = request.FILES['data']
+            filename_split = str(files).split('.')
+            file_ext = ['docx', 'pdf', 'txt']
+            characters = 'abcdefghijklmNOPQRSTUVWXYZ'
+            randomchar = [random.choice(characters) for i in range(10)]
+            rand = ''.join(randomchar)
+            if str(filename_split[1]) in file_ext:
+                if str(filename_split[1]) == 'pdf':
+                    path = default_storage.save(str(rand) + '.pdf', ContentFile(files.read()))
+                    print(BASE_DIR)
+                    pdf_file = (str(BASE_DIR)+'/media/') + str(path)
+                    docx_file = (str(BASE_DIR)+'/media/') + (str(rand)+'.docx')
+                    global texts
+
+                    def convert_pdf_to_docx():
+                        cv = Converter(pdf_file)
+                        cv.convert(docx_file)
+                        cv.close()
+
+                    def read_doc_save_var():
+                        convert_pdf_to_docx()
+                        doc = Document(docx_file)
+                        texts = ""
+                        for para in doc.paragraphs:
+                            texts += para.text
+                        return texts
+
+                    text = read_doc_save_var()
+                    return Response({'Abstract':self.process(text)},status = status.HTTP_200_OK)
+
+                elif str(filename_split[1]) == 'docx':
+                    path = default_storage.save(str(rand) + '.docx', ContentFile(files.read()))
+                    docx_file = (str(BASE_DIR) + '/media/') + str(path)
+                    global texts
+                    def read_doc_save():
+                        doc = Document(docx_file)
+                        texts = ""
+                        for para in doc.paragraphs:
+                            texts += para.text
+                        return texts
+                    text = read_doc_save()
+                    return Response({'Abstract':self.process(text)},status = status.HTTP_200_OK)
+
+                elif str(filename_split[1]) == 'txt':
+                    path = default_storage.save(str(rand) + '.txt', ContentFile(files.read()))
+                    doc_file = (str(BASE_DIR) + '/media/') + str(path)
+                    with open(doc_file, 'r') as file:
+                        text = file.read()
+                    # print("---------",text,"-----------")
+                    return Response({'Abstract': self.process(text)}, status=status.HTTP_200_OK)
+                return Response({'msg':'Yes it has a '+filename_split[1]+' file'},status=status.HTTP_200_OK)
+            else:
+                return Response({'msg':'please upload "docx","pdf","txt"'},status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({'msg':'please upload file and submit'},status=status.HTTP_400_BAD_REQUEST)

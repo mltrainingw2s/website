@@ -19,3 +19,14 @@ class Restmlwebcam(models.Model):
 
     class Meta:
         db_table = "RestWebcam"   
+
+class Restmltext(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    pdf = models.CharField(max_length=100,null=True)
+    docx = models.CharField(max_length=100,null=True)
+    txt = models.CharField(max_length=100,null=True)
+    final_abstract = models.CharField(max_length=100,null=True)
+
+    class Meta:
+        db_table = "RestText"
