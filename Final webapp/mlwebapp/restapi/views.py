@@ -34,7 +34,7 @@ import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from heapq import nlargest
-from pdf2docx import Converter
+from pdf2docxnogui import Converter
 from docx import Document
 
 # Create your views here.
