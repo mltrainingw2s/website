@@ -170,6 +170,30 @@ class Text_file(APIView):
         f.close()
         return summary
 
+        def process2(self,text):
+        from gensim.summarization.summarizer import summarize
+        print("----come")
+        abstract = summarize(text)
+        print(abstract)
+        return abstract
+
+    def best(self,text):
+        main_file = text
+        spacytest = self.process(text)
+        gensimtest = self.process2(text)
+
+        doc1_tokens = set(main_file.lower().split())
+        doc2_tokens = set(str(spacytest).lower().split())
+        doc3_tokens = set(str(gensimtest).lower().split())
+        
+        j1 = len(doc1_tokens.intersection(doc2_tokens)) / len(doc1_tokens.union(doc2_tokens))
+        j2 = len(doc1_tokens.intersection(doc3_tokens)) / len(doc1_tokens.union(doc3_tokens))
+        j1 = j1 * 100
+        j2 = j2 * 100
+        
+        context = {'file': str(self.i) + '.txt','abstract_1': str(spacytest),'a1_percentage':str(j1) ,'abstract_2':str(gensimtest), 'a2_percentage':str(j2)}
+        return context
+
     def post(self,request):
         if 'data' in request.FILES:
             from django.core.files.storage import default_storage
@@ -203,7 +227,7 @@ class Text_file(APIView):
 
                     text = read_doc_save_var()
                     context = {'file': str(self.i)+'.txt', 'Abstract': self.process(text)}
-                    return Response(context, status=status.HTTP_200_OK)
+                    return Response(self.best(text), status=status.HTTP_200_OK)
 
                 elif str(filename_split[1]) == 'docx':
                     path = default_storage.save(str(rand) + '.docx', ContentFile(files.read()))
@@ -217,7 +241,7 @@ class Text_file(APIView):
                         return texts
                     text = read_doc_save()
                     context = {'file': str(self.i)+'.txt', 'Abstract': self.process(text)}
-                    return Response(context, status=status.HTTP_200_OK)
+                    return Response(self.best(text), status=status.HTTP_200_OK)
 
                 elif str(filename_split[1]) == 'txt':
                     path = default_storage.save(str(rand) + '.txt', ContentFile(files.read()))
@@ -225,7 +249,7 @@ class Text_file(APIView):
                     with open(doc_file, 'r') as file:
                         text = file.read()
                     context = {'file': str(self.i)+'.txt', 'Abstract': self.process(text)}
-                    return Response(context, status=status.HTTP_200_OK)
+                    return Response(self.best(text), status=status.HTTP_200_OK)
                 return Response({'msg':'Yes it has a '+filename_split[1]+' file'},status=status.HTTP_200_OK)
             else:
                 return Response({'msg':'please upload "docx","pdf","txt"'},status=status.HTTP_400_BAD_REQUEST)
