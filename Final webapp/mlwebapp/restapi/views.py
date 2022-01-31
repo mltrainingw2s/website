@@ -129,6 +129,9 @@ class Image_detect(APIView):
 
 
 class Text_file(APIView):
+    def __init__(self):
+        self.i = random.randint(1111,2222)
+
     def get(self,request):
         return Response({'msg':'Files are not saved, you can only upload and view the Abstract of your pdf. Once you upload other file or once you leave the abstract wont be saved'},status=status.HTTP_204_NO_CONTENT)
 
@@ -162,6 +165,9 @@ class Text_file(APIView):
         summary = nlargest(select_length, sentence_scores, key=sentence_scores.get)
         final_summary = [word.text for word in summary]
         summary = ' '.join(final_summary)
+        f = open(str(BASE_DIR)+'/static/'+str(self.i)+'.txt','w')
+        f.write(summary)
+        f.close()
         return summary
 
     def post(self,request):
@@ -196,7 +202,8 @@ class Text_file(APIView):
                         return texts
 
                     text = read_doc_save_var()
-                    return Response({'Abstract':self.process(text)},status = status.HTTP_200_OK)
+                    context = {'file': str(self.i)+'.txt', 'Abstract': self.process(text)}
+                    return Response(context, status=status.HTTP_200_OK)
 
                 elif str(filename_split[1]) == 'docx':
                     path = default_storage.save(str(rand) + '.docx', ContentFile(files.read()))
@@ -209,14 +216,16 @@ class Text_file(APIView):
                             texts += para.text
                         return texts
                     text = read_doc_save()
-                    return Response({'Abstract':self.process(text)},status = status.HTTP_200_OK)
+                    context = {'file': str(self.i)+'.txt', 'Abstract': self.process(text)}
+                    return Response(context, status=status.HTTP_200_OK)
 
                 elif str(filename_split[1]) == 'txt':
                     path = default_storage.save(str(rand) + '.txt', ContentFile(files.read()))
                     doc_file = (str(BASE_DIR) + '/media/') + str(path)
                     with open(doc_file, 'r') as file:
                         text = file.read()
-                    return Response({'Abstract': self.process(text)}, status=status.HTTP_200_OK)
+                    context = {'file': str(self.i)+'.txt', 'Abstract': self.process(text)}
+                    return Response(context, status=status.HTTP_200_OK)
                 return Response({'msg':'Yes it has a '+filename_split[1]+' file'},status=status.HTTP_200_OK)
             else:
                 return Response({'msg':'please upload "docx","pdf","txt"'},status=status.HTTP_400_BAD_REQUEST)
