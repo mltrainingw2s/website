@@ -170,7 +170,7 @@ class Text_file(APIView):
         f.close()
         return summary
 
-        def process2(self,text):
+    def process2(self,text):
         from gensim.summarization.summarizer import summarize
         print("----come")
         abstract = summarize(text)
