@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Blogs {% endblock %}
+
+{% block css %}
+.edit{
+float: right;
+}
+{% endblock %}
+{% block body %}
+{% load humanize %}
+<div class="container w-75 my-4">
+      <h2 class="blog-post-title">{{post.title}}</h2>
+      <br>
+      <div class="media">
+            {% if post.author.profile.image %}
+            <img class="mr-3 rounded-circle" src="{{post.author.profile.image.url}}" width="50px" height="50px"
+                  alt="image">
+            {% endif %}
+            <div class="media-body">
+                  <h5 class="mt-0"><a href="/user_profile/{{post.author.id}}/">{{post.author}}
+                              {% if user.is_authenticated %}
+                              {% if user.id == post.author.id %}
+                              <small><a href="/edit_blog_post/{{post.slug}}/" class="edit btn btn-warning">Edit Blog Post</a></small>
+                              {% endif %}
+                              {% endif %}
+                        </a></h5>
+                  {{post.dateTime}}
+            </div>
+      </div>
+      <br>
+      <img src="/media/{{post.image}}" alt="" height="250px" width="500px">
+      <br>
+      <p>{{post.content}}.</p>
+      <hr>
+      {% if user.is_authenticated %}
+      <div class="container">
+            
+            {% else %}
+            <div class="container">
+                  {% endif %}
+                
+            </div>
+      </div>
+
+      {% endblock %}

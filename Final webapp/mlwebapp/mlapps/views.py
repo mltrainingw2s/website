@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse,redirect
 import cv2
 from fer import FER
 from PIL import Image
 from .models import Ml_Image
+from .Forms import *
 from django.core.files.storage import FileSystemStorage
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +26,17 @@ from mlapps.camera import VideoCamera,SnapCamera
 from ipware import get_client_ip
 import random
 import datetime
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from django.contrib.auth.hashers import make_password,check_password
+import json as j
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.views.generic import UpdateView
+from django.contrib.auth import logout
 
 # Create your views here.
 def index(request):
@@ -293,3 +305,252 @@ class snaps():
 # 	return StreamingHttpResponse(gen(IPWebCam()),
 #                     #video type
 # 					content_type='multipart/x-mixed-replace; boundary=frame')
+
+@method_decorator(csrf_exempt)
+
+def Register(request):
+    if request.method=="POST": 
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        first_name=request.POST.get('first_name')
+        last_name=request.POST.get('last_name')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        
+        if password1 != password2:
+            messages.error(request, "Passwords do not match.")
+            return redirect('/register')
+ 
+        user = User.objects.create_user(username, email, password1)
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        return render(request, 'login.html')  
+    return render(request, "register.html")
+
+@method_decorator(csrf_exempt)
+
+def Login(request):
+    if request.method=="POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Successfully Logged In")
+            return redirect('/blogs/') 
+        else:
+    
+            messages.error(request, "Invalid Credentials")
+        return render(request, 'login.html')   
+    return render(request, "login.html")
+
+
+def all_blog(request):
+    posts = BlogPost.objects.all()
+    posts = BlogPost.objects.filter().order_by('-dateTime')
+    return render(request, "all_blog.html", {'posts':posts})
+
+def blogs_comments(request, slug):
+    post = BlogPost.objects.filter(slug=slug).first()
+    comments = Comment.objects.filter(blog=post)
+    if request.method=="POST":
+        user = request.user
+        content = request.POST.get('content','')
+        blog_id =request.POST.get('blog_id','')
+        comment = Comment(user = user, content = content, blog=post)
+        comment.save()
+    return render(request, "blog_comments.html", {'post':post, 'comments':comments})
+
+def Delete_Blog_Post(request, slug):
+    posts = BlogPost.objects.get(slug=slug)
+    if request.method == "POST":
+        posts.delete()
+        return redirect('/blogs/')
+    return render(request, 'delete_blog_post.html', {'posts':posts})
+
+def search(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        blogs = BlogPost.objects.filter(title__contains=searched)
+        return render(request, "search.html", {'searched':searched, 'blogs':blogs})
+    else:
+        return render(request, "search.html", {})
+
+@login_required(login_url = '/login')
+def add_blogs(request):
+    if request.method=="POST":
+        form = BlogPostForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            blogpost = form.save(commit=False)
+            blogpost.author = request.user
+            blogpost.save()
+            obj = form.instance
+            alert = True
+            return render(request, "add_blogs.html",{'obj':obj, 'alert':alert})
+    else:
+        form=BlogPostForm()
+    return render(request, "add_blogs.html", {'form':form})
+
+class UpdatePostView(UpdateView):
+    model = BlogPost
+    template_name = 'edit_blog_post.html'
+    fields = ['title', 'slug', 'content', 'image']
+
+
+
+def Logout(request):
+    logout(request)
+    messages.success(request, "Successfully logged out")
+    return redirect('/login')
+
+
+def blogs(request):
+    user = request.user.id
+    posts = BlogPost.objects.filter(author_id=user).order_by('-dateTime')
+    return render(request, "blog.html", {'posts':posts})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# @method_decorator(csrf_exempt)
+
+    
+# def Signup(request):
+
+#     datas = j.loads(request.body.decode('utf-8'))
+#     username = datas['username']
+#     first_name = datas['first_name']
+#     last_name = datas['last_name']
+#     email = datas['email']
+#     password = datas['password']
+
+#     if 'first_name' not in datas:
+#         return json.Response('first_name is Required', 400, False)
+#     else:
+#         first_name = datas['first_name']
+#     if 'last_name' not in datas:
+#         return json.Response('last_name is Required', 400, False)
+#     else:
+#         last_name = datas['last_name']
+#     if 'username' not in datas:
+#         return json.Response('username is Required', 400, False)
+#     else:
+#         username = datas['username']
+#     if 'email' not in datas:
+#         return json.Response('Email Address is Required', 400, False)
+#     else:
+#         email = datas['email']
+#     if 'password' not in datas:
+#         return json.Response('password is Required', 400, False)
+#     else:
+#         password = datas['password']
+#     print(datas)
+#     print(email)
+#     print(username)
+#     print(password)
+#     usertbl = User(email=email, username=username,password=make_password(password) )
+#     usertbl.save()
+#     return HttpResponse('Success')
+
+
+# @method_decorator(csrf_exempt)
+# def login(request):
+#     # data = j.loads(request.body.decode('utf-8'))
+
+#     email = request.POST.get('email','')
+#     print(email,"username")
+#     password = request.POST.get('password','')
+#     data = User.objects.get(email=email)
+#     user = User.objects.filter(email=email).exists()
+#     if user:
+#         print(user)
+#         # user1 = User.objects.filter(email=email)
+#         print(data.password,"data.password")
+#         if check_password(request.POST['password'], data.password):
+#             # response = {"detail": "Invalid credentials"}
+#             print("**********")
+#             return HttpResponse('Success')
+#         else:
+#             print("**&&&&&&&&&")
+#             return HttpResponse('Fail')
+        
+
+
+
+
